@@ -38,7 +38,7 @@ function CommandCenter({
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 5, flexShrink: 0 }}>
             <Settings size={12} color="var(--wg-cyan)" />
-            <span style={{ fontSize: 10, fontWeight: 700, color: '#E2E8F0', letterSpacing: '0.02em', textTransform: 'uppercase' }}>Scénario</span>
+            <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--wg-text)', letterSpacing: '0.02em', textTransform: 'uppercase' }}>Scénario</span>
           </div>
           <select
             value={scenarioKey}
@@ -51,8 +51,8 @@ function CommandCenter({
             }}
           >
             {Object.entries(SCENARIOS).map(([key, sc]) => (
-              <option key={key} value={key} style={{ background: 'var(--wg-surface)', color: '#E2E8F0' }}>
-                {sc.icon} {sc.name}
+              <option key={key} value={key} style={{ background: 'var(--wg-surface)', color: 'var(--wg-text)' }}>
+                {sc.name}
               </option>
             ))}
           </select>
@@ -94,7 +94,7 @@ function CommandCenter({
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 3 }}>
             <span style={{ fontSize: 9, color: 'var(--wg-muted)', textTransform: 'uppercase' }}>T:</span>
-            <span className="mono-precision layout-lock" style={{ fontSize: 12, fontWeight: 700, color: '#E2E8F0', minWidth: 30 }}>
+            <span className="mono-precision layout-lock" style={{ fontSize: 12, fontWeight: 700, color: 'var(--wg-text)', minWidth: 30 }}>
               {String(Math.round(simTime)).padStart(2, '0')}s
             </span>
           </div>

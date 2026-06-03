@@ -59,7 +59,7 @@ const CircularGauge = React.memo(({ value, label, trendData, color }) => {
         </svg>
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <p className="section-label" style={{ fontSize: '8px', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{label}</p>
+        <p className="section-label" style={{ fontSize: '10px', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{label}</p>
         <div style={{ display: 'flex', alignItems: 'center', marginTop: 2 }}>
           {sparklinePath && (
             <svg width="55" height="18" style={{ overflow: 'visible', flexShrink: 0 }}>
@@ -95,7 +95,7 @@ const LinearGauge = React.memo(({ value, max = 100, label, trendData, color }) =
     <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'rgba(5,6,8,0.25)', border: '1px solid var(--wg-border)', borderRadius: '6px', padding: '6px 10px', height: '62px' }}>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4 }}>
-          <span className="section-label" style={{ fontSize: '8px' }}>{label}</span>
+          <span className="section-label" style={{ fontSize: '10px' }}>{label}</span>
           <span className="mono-precision" style={{ fontSize: '11px', fontWeight: '700', color }}>{value}mm/h</span>
         </div>
         <div className="progress-bar" style={{ height: '3px', background: 'rgba(255, 255, 255, 0.02)' }}>
@@ -157,7 +157,7 @@ const RiskGauge = React.memo(({ value, label, trendData, color }) => {
         </svg>
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <p className="section-label" style={{ fontSize: '8px', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{label}</p>
+        <p className="section-label" style={{ fontSize: '10px', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{label}</p>
         <div style={{ display: 'flex', alignItems: 'center', marginTop: 2 }}>
           {sparklinePath && (
             <svg width="55" height="18" style={{ overflow: 'visible', flexShrink: 0 }}>
@@ -227,14 +227,14 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
                   {/* Total */}
                   <div className="mono-precision" style={{
                     width: '18px', height: '18px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    background: 'rgba(255,255,255,0.03)', border: '1px solid var(--wg-border)', color: 'var(--wg-muted)', fontSize: '8.5px', fontWeight: '700'
+                    background: 'rgba(255,255,255,0.03)', border: '1px solid var(--wg-border)', color: 'var(--wg-muted)', fontSize: '10px', fontWeight: '700'
                   }}>
                     {reg.total}
                   </div>
                   {/* Active status indicator */}
                   <div className="mono-precision" style={{
                     width: '18px', height: '18px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    background: styleCircle.bg, border: `1px solid ${styleCircle.border}`, color: styleCircle.color, fontSize: '8.5px', fontWeight: '700'
+                    background: styleCircle.bg, border: `1px solid ${styleCircle.border}`, color: styleCircle.color, fontSize: '10px', fontWeight: '700'
                   }}>
                     {reg.count}
                   </div>
@@ -247,7 +247,7 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
 
       {/* ── Asset Interactive Selector List ── */}
       <div className="glass" style={{ borderRadius: 8, padding: '10px 12px', flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <p className="section-label" style={{ fontSize: '8.5px', flexShrink: 0 }}>Liste des actifs ({assets.length})</p>
+        <p className="section-label" style={{ fontSize: '10px', flexShrink: 0 }}>Liste des actifs ({assets.length})</p>
         <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 4, paddingRight: 4 }}>
           {assets.map(asset => {
             const isSelected = asset.id === selectedAsset.id;
@@ -288,12 +288,12 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
             <h3 className="section-title text-truncate-precision" style={{ fontSize: '12.5px', margin: 0 }}>{selectedAsset.name}</h3>
             <button 
               onClick={() => onOpenAsset(selectedAsset)}
-              style={{ background: 'none', border: 'none', color: 'var(--wg-cyan)', fontSize: '9px', fontWeight: '700', cursor: 'pointer', padding: 0 }}
+              style={{ background: 'none', border: 'none', color: 'var(--wg-cyan)', fontSize: '10px', fontWeight: '700', cursor: 'pointer', padding: 0 }}
             >
               INFOS ↗
             </button>
           </div>
-          <p style={{ fontSize: '10px', color: 'var(--wg-muted)', marginTop: 1 }} className="text-truncate-precision">{selectedAsset.basin} · {selectedAsset.province}</p>
+          <p style={{ fontSize: '10.5px', color: 'var(--wg-muted)', marginTop: 1 }} className="text-truncate-precision">{selectedAsset.basin} · {selectedAsset.province}</p>
         </div>
 
         {/* Dynamic Gauges Panel */}
@@ -330,7 +330,7 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
               { label: 'Sync', val: `${selectedAsset.lastSync || 'Just now'} ago` },
             ].map((row, rIdx) => (
               <tr key={rIdx} style={{ borderBottom: '1px solid rgba(255,255,255,0.015)' }}>
-                <td className="section-label" style={{ padding: '4px 0', width: '80px', fontSize: '8px', color: 'var(--wg-muted)' }}>{row.label}</td>
+                <td className="section-label" style={{ padding: '4px 0', width: '80px', fontSize: '10px', color: 'var(--wg-muted)' }}>{row.label}</td>
                 <td className={row.class || ''} style={{ padding: '4px 0', textAlign: 'right', fontWeight: '600' }}>
                   <div className="layout-lock" style={{ display: 'inline-block', minWidth: '45px', textAlign: 'right' }}>
                     {row.val}
@@ -343,7 +343,7 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
 
         {/* Decision Box */}
         <div style={{ padding: '6px 8px', background: levelSoft(selectedAsset.status), border: `1px solid ${levelColor(selectedAsset.status)}25`, borderRadius: '4px' }}>
-          <p className="section-label" style={{ fontSize: '8px', color: 'var(--wg-muted)' }}>Décision automatique</p>
+          <p className="section-label" style={{ fontSize: '10px', color: 'var(--wg-muted)' }}>Décision automatique</p>
           <p style={{ fontSize: '10.5px', fontWeight: '700', color: levelColor(selectedAsset.status), marginTop: 1, display: 'flex', alignItems: 'center', gap: 4 }}>
             <CheckCircle2 size={10} color={levelColor(selectedAsset.status)} />
             {LEVELS[selectedAsset.status]?.action || 'Surveillance active'}

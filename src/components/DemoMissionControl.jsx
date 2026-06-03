@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
 import { SCENARIOS, DECISION_STAGES } from '../data/scenarios';
 import { levelColor } from '../utils';
-import { Play, Pause, RotateCcw, SkipForward, Target, Zap } from 'lucide-react';
+import { Play, Pause, RotateCcw, SkipForward, Target, Zap, Radio, CheckCircle2, TrendingUp, AlertTriangle, Shield, FileText } from 'lucide-react';
 
 const STAGE_LABELS = ['Détection', 'Validation', 'Prédiction', 'Alerte', 'Réponse', 'Rapport'];
-const STAGE_ICONS  = ['📡', '✅', '🎯', '🚨', '🚧', '📋'];
+const STAGE_ICONS  = [Radio, CheckCircle2, TrendingUp, AlertTriangle, Shield, FileText];
 
 function DemoMissionControl({
   demoMode, simTime, running, speed, setSpeed,
@@ -34,11 +34,11 @@ function DemoMissionControl({
         onClick={startJuryDemo}
         className="jury-launch-btn"
         style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
           width: '100%', padding: '12px 16px', borderRadius: 8,
           background: 'linear-gradient(135deg, rgba(0,240,255,0.08) 0%, rgba(14,116,144,0.15) 100%)',
           border: '1px solid rgba(0,240,255,0.3)',
-          color: '#00F0FF', fontSize: 13, fontWeight: 800,
+          color: 'var(--wg-cyan)', fontSize: 13, fontWeight: 800,
           cursor: 'pointer', transition: 'all 0.2s ease',
           letterSpacing: '0.03em', fontFamily: 'Outfit, sans-serif',
           position: 'relative', overflow: 'hidden',
@@ -54,8 +54,8 @@ function DemoMissionControl({
           e.currentTarget.style.borderColor = 'rgba(0,240,255,0.3)';
         }}
       >
-        <Target size={16} />
-        ▶ Lancer Démo Jury — Crue Éclair 90s
+        <Play size={13} fill="currentColor" />
+        <span>Lancer Démo Jury — Crue Éclair 90s</span>
       </button>
     );
   }
@@ -65,27 +65,27 @@ function DemoMissionControl({
     <div className="glass" style={{
       borderRadius: 8, padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: 5, flexShrink: 0,
       borderLeft: `3px solid ${color}`,
-      background: 'linear-gradient(135deg, var(--wg-surface) 0%, rgba(6,14,26,0.95) 100%)',
+      background: 'linear-gradient(135deg, var(--wg-surface) 0%, var(--wg-bg-deep) 100%)',
     }}>
       {/* Header row */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           <Zap size={12} color={color} />
-          <span style={{ fontSize: 10, fontWeight: 800, color: '#00F0FF', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+          <span style={{ fontSize: 10, fontWeight: 800, color: 'var(--wg-cyan)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
             Mission en cours
           </span>
           {running && (
             <span style={{
               fontSize: 8, padding: '1px 5px', borderRadius: 3,
               background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)',
-              color: '#EF4444', fontWeight: 700, animation: 'blink 1.2s infinite',
+              color: 'var(--wg-red)', fontWeight: 700, animation: 'blink 1.2s infinite',
             }}>● LIVE</span>
           )}
         </div>
         {/* Mission timer */}
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 3 }}>
           <span style={{ fontSize: 8, color: 'var(--wg-muted)', textTransform: 'uppercase' }}>T+</span>
-          <span className="mono-precision" style={{ fontSize: 18, fontWeight: 900, color: '#E2E8F0', minWidth: 30 }}>
+          <span className="mono-precision" style={{ fontSize: 18, fontWeight: 900, color: 'var(--wg-text)', minWidth: 30 }}>
             {String(Math.round(simTime)).padStart(2, '0')}
           </span>
           <span style={{ fontSize: 9, color: 'var(--wg-muted)' }}>/{maxTime}s</span>
@@ -97,17 +97,19 @@ function DemoMissionControl({
         {STAGE_LABELS.map((label, i) => {
           const done = i <= stageIdx;
           const active = i === stageIdx;
-          const stageColor = active ? color : done ? '#00F0FF' : '#2A3544';
+          const stageColor = active ? color : done ? 'var(--wg-cyan)' : 'var(--wg-border)';
+          const Icon = STAGE_ICONS[i];
+
           return (
             <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
               <div style={{
                 display: 'flex', alignItems: 'center', gap: 3,
                 padding: '2px 6px', borderRadius: 4,
                 background: active ? `${color}15` : done ? 'rgba(0,240,255,0.04)' : 'transparent',
-                border: `1px solid ${active ? `${color}50` : done ? 'rgba(0,240,255,0.15)' : '#1E2530'}`,
+                border: `1px solid ${active ? `${color}50` : done ? 'rgba(0,240,255,0.15)' : 'var(--wg-border)'}`,
                 transition: 'all 0.4s ease',
               }}>
-                <span style={{ fontSize: 9, lineHeight: 1 }}>{STAGE_ICONS[i]}</span>
+                <Icon size={10} color={stageColor} />
                 <span style={{
                   fontSize: 8, fontWeight: 800, color: stageColor,
                   letterSpacing: '0.04em', textTransform: 'uppercase',
@@ -115,7 +117,7 @@ function DemoMissionControl({
               </div>
               {i < STAGE_LABELS.length - 1 && (
                 <span style={{
-                  fontSize: 8, color: done ? '#00F0FF' : '#1E2530',
+                  fontSize: 8, color: done ? 'var(--wg-cyan)' : 'var(--wg-border)',
                   transition: 'color 0.3s ease',
                 }}>→</span>
               )}
@@ -127,7 +129,7 @@ function DemoMissionControl({
       {/* Story step label */}
       {storyStep && (
         <div style={{
-          fontSize: 10, fontWeight: 700, color: '#E2E8F0',
+          fontSize: 10, fontWeight: 700, color: 'var(--wg-text)',
           padding: '3px 8px', borderRadius: 4,
           background: `${color}08`, border: `1px solid ${color}15`,
           textAlign: 'center',
@@ -137,11 +139,11 @@ function DemoMissionControl({
       )}
 
       {/* Progress bar */}
-      <div style={{ height: 3, borderRadius: 2, background: '#1E2530', overflow: 'hidden' }}>
+      <div style={{ height: 3, borderRadius: 2, background: 'var(--wg-border)', overflow: 'hidden' }}>
         <div style={{
           height: '100%', borderRadius: 2,
           width: `${progress}%`,
-          background: `linear-gradient(90deg, #00F0FF, ${color})`,
+          background: `linear-gradient(90deg, var(--wg-cyan), ${color})`,
           transition: 'width 0.3s ease',
           boxShadow: `0 0 8px ${color}60`,
         }} />
@@ -181,7 +183,7 @@ function DemoMissionControl({
               width: i === currentEventIdx ? 10 : 4,
               height: 4,
               borderRadius: 3,
-              background: i <= currentEventIdx ? color : '#1E2530',
+              background: i <= currentEventIdx ? color : 'var(--wg-border)',
               transition: 'all 0.3s ease',
               boxShadow: i === currentEventIdx ? `0 0 4px ${color}` : 'none',
             }} />

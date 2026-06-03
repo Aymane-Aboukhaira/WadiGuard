@@ -27,7 +27,7 @@ function CapPreview({ scenario, phase, consequences }) {
         effective: now.toISOString(),
         expires: new Date(now.getTime() + 6 * 3600000).toISOString(),
         senderName: 'Direction Générale de l\'Hydraulique — ABH Loukkos',
-        headline: `${scenario?.icon || '⚠️'} ${scenario?.name || 'Alerte hydrologique'} — Région TTA`,
+        headline: `${scenario?.name || 'Alerte hydrologique'} — Région TTA`,
         description: `Alerte hydrologique niveau ${phase.level?.toUpperCase()}. Population exposée : ${consequences?.population || 0}. Routes affectées : ${consequences?.roads || 0}. Équipes déployées : ${consequences?.teams || 0}.`,
         instruction: 'Suivre les instructions des autorités locales. Éviter les zones basses et les oueds. Se réfugier en hauteur.',
         area: {
@@ -52,11 +52,11 @@ function CapPreview({ scenario, phase, consequences }) {
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-          <FileText size={11} color="#00F0FF" />
-          <span style={{ fontSize: 9, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--wg-muted)' }}>
+          <FileText size={12} color="var(--wg-cyan)" />
+          <span style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--wg-muted)' }}>
             CAP Alert Preview
           </span>
-          <span style={{ fontSize: 8, padding: '1px 5px', borderRadius: 3, background: 'rgba(0,240,255,0.06)', border: '1px solid rgba(0,240,255,0.2)', color: '#00F0FF', fontWeight: 700 }}>
+          <span style={{ fontSize: 8.5, padding: '1px 5px', borderRadius: 3, background: 'rgba(0,240,255,0.06)', border: '1px solid rgba(0,240,255,0.2)', color: 'var(--wg-cyan)', fontWeight: 700 }}>
             SIMULÉ
           </span>
         </div>
@@ -64,8 +64,8 @@ function CapPreview({ scenario, phase, consequences }) {
           display: 'flex', alignItems: 'center', gap: 4, padding: '2px 8px', borderRadius: 4,
           background: copied ? 'rgba(34,197,94,0.1)' : 'rgba(255,255,255,0.02)',
           border: `1px solid ${copied ? 'rgba(34,197,94,0.3)' : 'var(--wg-border)'}`,
-          color: copied ? '#22C55E' : 'var(--wg-muted)',
-          fontSize: 9, fontWeight: 700, cursor: 'pointer', transition: 'all 0.15s',
+          color: copied ? 'var(--wg-green)' : 'var(--wg-muted)',
+          fontSize: 9.5, fontWeight: 700, cursor: 'pointer', transition: 'all 0.15s',
           fontFamily: 'Outfit, sans-serif',
         }}>
           {copied ? <Check size={10} /> : <Copy size={10} />}
@@ -77,23 +77,23 @@ function CapPreview({ scenario, phase, consequences }) {
       <div style={{
         padding: 8, borderRadius: 6, background: 'var(--wg-bg-deep)',
         border: '1px solid var(--wg-border)', maxHeight: 160, overflowY: 'auto',
-        fontFamily: 'JetBrains Mono, monospace', fontSize: 9, lineHeight: 1.6,
+        fontFamily: 'JetBrains Mono, monospace', fontSize: 9.5, lineHeight: 1.6,
         color: 'var(--wg-muted)',
       }}>
-        <div><span style={{ color: '#F59E0B' }}>identifier:</span> <span style={{ color: '#00F0FF' }}>{capMessage.identifier}</span></div>
-        <div><span style={{ color: '#F59E0B' }}>sender:</span> <span style={{ color: '#E2E8F0' }}>{capMessage.sender}</span></div>
-        <div><span style={{ color: '#F59E0B' }}>status:</span> {capMessage.status}</div>
-        <div><span style={{ color: '#F59E0B' }}>severity:</span> <span style={{ color: capMessage.info.severity === 'Extreme' ? '#EF4444' : capMessage.info.severity === 'Severe' ? '#EF4444' : '#F59E0B' }}>{capMessage.info.severity}</span></div>
-        <div><span style={{ color: '#F59E0B' }}>urgency:</span> <span style={{ color: capMessage.info.urgency === 'Immediate' ? '#EF4444' : '#F59E0B' }}>{capMessage.info.urgency}</span></div>
-        <div><span style={{ color: '#F59E0B' }}>certainty:</span> {capMessage.info.certainty}</div>
-        <div><span style={{ color: '#F59E0B' }}>areaDesc:</span> <span style={{ color: '#E2E8F0' }}>{capMessage.info.area.areaDesc}</span></div>
-        <div style={{ marginTop: 4, color: '#E2E8F0', fontSize: 8.5 }}>
-          <span style={{ color: '#F59E0B' }}>instruction:</span> {capMessage.info.instruction}
+        <div><span style={{ color: 'var(--wg-orange)' }}>identifier:</span> <span style={{ color: 'var(--wg-cyan)' }}>{capMessage.identifier}</span></div>
+        <div><span style={{ color: 'var(--wg-orange)' }}>sender:</span> <span style={{ color: 'var(--wg-text)' }}>{capMessage.sender}</span></div>
+        <div><span style={{ color: 'var(--wg-orange)' }}>status:</span> {capMessage.status}</div>
+        <div><span style={{ color: 'var(--wg-orange)' }}>severity:</span> <span style={{ color: capMessage.info.severity === 'Extreme' || capMessage.info.severity === 'Severe' ? 'var(--wg-red)' : 'var(--wg-orange)' }}>{capMessage.info.severity}</span></div>
+        <div><span style={{ color: 'var(--wg-orange)' }}>urgency:</span> <span style={{ color: capMessage.info.urgency === 'Immediate' ? 'var(--wg-red)' : 'var(--wg-orange)' }}>{capMessage.info.urgency}</span></div>
+        <div><span style={{ color: 'var(--wg-orange)' }}>certainty:</span> {capMessage.info.certainty}</div>
+        <div><span style={{ color: 'var(--wg-orange)' }}>areaDesc:</span> <span style={{ color: 'var(--wg-text)' }}>{capMessage.info.area.areaDesc}</span></div>
+        <div style={{ marginTop: 4, color: 'var(--wg-text)', fontSize: 9 }}>
+          <span style={{ color: 'var(--wg-orange)' }}>instruction:</span> {capMessage.info.instruction}
         </div>
       </div>
 
-      <p style={{ fontSize: 8, color: 'var(--wg-muted)', textAlign: 'center', fontStyle: 'italic' }}>
-        Format conforme OGC CAP v1.2 · Intégration API future soumise à convention institutionnelle
+      <p style={{ fontSize: 8.5, color: 'var(--wg-muted)', textAlign: 'center', fontStyle: 'italic', margin: 0 }}>
+        Format conforme OGC CAP v1.2 · Transmission XML/JSON
       </p>
     </div>
   );

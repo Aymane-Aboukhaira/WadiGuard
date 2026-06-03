@@ -36,6 +36,14 @@ function AppContent() {
     storyStep,
   } = useSimulationContext();
 
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('wadiguard-theme') || 'dark';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('wadiguard-theme', theme);
+  }, [theme]);
+
   const [layers, setLayers] = useState({ dams: true, rivers: true, roads: true, impacts: true });
   const [assetModal, setAssetModal] = useState(null);
 
@@ -60,7 +68,7 @@ function AppContent() {
   };
 
   const mapProps = {
-    assets, selectedAsset, setSelectedAssetId, layers, setLayers, scenario, phase
+    assets, selectedAsset, setSelectedAssetId, layers, setLayers, scenario, phase, theme
   };
 
   /* Jury summary data — extract from last event if available */
@@ -72,7 +80,7 @@ function AppContent() {
   };
 
   return (
-    <div className={`layout-root app-level-${phase.level}`}>
+    <div className={`layout-root app-level-${phase.level} theme-${theme}`}>
       <TopBar
         clock={clock}
         level={phase.level}
@@ -84,6 +92,8 @@ function AppContent() {
         demoMode={demoMode}
         simTime={simTime}
         decisionStage={decisionStage}
+        theme={theme}
+        setTheme={setTheme}
       />
 
       <div className="main-area">

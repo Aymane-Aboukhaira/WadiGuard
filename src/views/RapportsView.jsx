@@ -15,8 +15,8 @@ const HISTORY = [
 ];
 
 const S = {
-  card: { borderRadius: 10, padding: 12, border: '1px solid #1A2F4A', background: 'rgba(15,30,53,0.9)' },
-  kpi:  { borderRadius: 8, padding: '8px 10px', border: '1px solid #1A2F4A', background: 'rgba(6,14,26,0.85)', display: 'flex', flexDirection: 'column', gap: 2 },
+  card: { borderRadius: 8, padding: 14, border: '1px solid var(--wg-border)', background: 'var(--wg-surface)' },
+  kpi:  { borderRadius: 6, padding: '8px 10px', border: '1px solid var(--wg-border)', background: 'var(--wg-bg-deep)', display: 'flex', flexDirection: 'column', gap: 2 },
 };
 
 export default function RapportsView({ logs, liveAssets, phase, scenario, consequences, onOpenReport }) {
@@ -43,24 +43,24 @@ export default function RapportsView({ logs, liveAssets, phase, scenario, conseq
         ...S.card,
         padding: '16px 20px',
         borderBottom: '3px solid #D4AF37',
-        background: 'linear-gradient(135deg, rgba(10,25,47,0.95) 0%, rgba(6,14,26,0.98) 100%)',
+        background: 'linear-gradient(135deg, var(--wg-surface) 0%, var(--wg-bg-deep) 100%)',
       }}>
-        {/* Bilingual Header Header */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(26,47,74,0.5)', paddingBottom: 12, marginBottom: 12, gap: 15 }}>
+        {/* Bilingual Header */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--wg-border)', paddingBottom: 12, marginBottom: 12, gap: 15 }}>
           {/* Left: Ministry & Agency Details in French */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 1, maxWidth: '40%' }}>
-            <p style={{ fontSize: 9, fontWeight: 900, color: '#D4AF37', letterSpacing: '0.08em' }}>ROYAUME DU MAROC</p>
-            <p style={{ fontSize: 8, color: '#A0B3C6', fontWeight: 600, lineHeight: 1.2 }}>Ministère de l'Équipement et de l'Eau</p>
-            <p style={{ fontSize: 8, color: '#A0B3C6', fontWeight: 600, lineHeight: 1.2 }}>Direction Générale de l'Hydraulique</p>
-            <p style={{ fontSize: 8, color: '#E8F4FD', fontWeight: 700, lineHeight: 1.2 }}>Agence du Bassin Hydraulique du Loukkos</p>
+            <p style={{ fontSize: 9.5, fontWeight: 900, color: '#D4AF37', letterSpacing: '0.08em', margin: 0 }}>ROYAUME DU MAROC</p>
+            <p style={{ fontSize: 8.5, color: 'var(--wg-muted)', fontWeight: 600, lineHeight: 1.2, margin: 0 }}>Ministère de l'Équipement et de l'Eau</p>
+            <p style={{ fontSize: 8.5, color: 'var(--wg-muted)', fontWeight: 600, lineHeight: 1.2, margin: 0 }}>Direction Générale de l'Hydraulique</p>
+            <p style={{ fontSize: 8.5, color: 'var(--wg-text)', fontWeight: 700, lineHeight: 1.2, margin: 0 }}>Agence du Bassin Hydraulique du Loukkos</p>
           </div>
 
           {/* Center: Kingdom Seal / Emblem */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 2 }}>
             <svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="50" cy="50" r="45" stroke="#D4AF37" strokeWidth="2.5" fill="rgba(6,14,26,0.8)" />
+              <circle cx="50" cy="50" r="45" stroke="#D4AF37" strokeWidth="2.5" fill="var(--wg-bg-deep)" />
               <path d="M50 15 L61 48 L93 48 L67 67 L77 100 L50 80 L23 100 L33 67 L7 48 L39 48 Z" 
-                stroke="#22C55E" strokeWidth="3" fill="#D4AF37" strokeLinejoin="round" />
+                stroke="var(--wg-green)" strokeWidth="3" fill="#D4AF37" strokeLinejoin="round" />
               <path d="M40 18 L45 8 L50 12 L55 8 L60 18 Z" fill="#D4AF37" />
             </svg>
             <span style={{ fontSize: 7, fontWeight: 800, color: '#D4AF37', letterSpacing: '0.15em', textTransform: 'uppercase' }}>WadiGuard NOC</span>
@@ -68,32 +68,32 @@ export default function RapportsView({ logs, liveAssets, phase, scenario, conseq
 
           {/* Right: Ministry & Agency Details in Arabic */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 1, maxWidth: '40%', textAlign: 'right' }}>
-            <p style={{ fontSize: 10, fontWeight: 900, color: '#D4AF37', fontFamily: 'serif' }}>المملكة المغربية</p>
-            <p style={{ fontSize: 8, color: '#A0B3C6', fontWeight: 600, lineHeight: 1.2 }}>وزارة التجهيز والماء</p>
-            <p style={{ fontSize: 8, color: '#A0B3C6', fontWeight: 600, lineHeight: 1.2 }}>المديرية العامة للهندسة المائية</p>
-            <p style={{ fontSize: 8, color: '#E8F4FD', fontWeight: 700, lineHeight: 1.2 }}>وكالة الحوض المائي لللوكوس</p>
+            <p style={{ fontSize: 10, fontWeight: 900, color: '#D4AF37', fontFamily: 'serif', margin: 0 }}>المملكة المغربية</p>
+            <p style={{ fontSize: 8.5, color: 'var(--wg-muted)', fontWeight: 600, lineHeight: 1.2, margin: 0 }}>وزارة التجهيز والماء</p>
+            <p style={{ fontSize: 8.5, color: 'var(--wg-muted)', fontWeight: 600, lineHeight: 1.2, margin: 0 }}>المديرية العامة للهندسة المائية</p>
+            <p style={{ fontSize: 8.5, color: 'var(--wg-text)', fontWeight: 700, lineHeight: 1.2, margin: 0 }}>وكالة الحوض المائي لللوكوس</p>
           </div>
         </div>
 
         {/* Lower Row: Action & Title */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
           <div>
-            <p style={{ fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.16em', color: '#8BA3BE' }}>Module d'Archivage & CAP</p>
-            <h2 style={{ fontSize: 16, fontWeight: 900, color: '#E8F4FD', marginTop: 2 }}>Registre des Rapports Légaux</h2>
-            <p style={{ fontSize: 10, color: '#8BA3BE', marginTop: 2 }}>Génération de bulletins d'alerte et transmission des fiches d'impacts au commandement national</p>
+            <p style={{ fontSize: 9.5, textTransform: 'uppercase', letterSpacing: '0.16em', color: 'var(--wg-muted)', margin: 0 }}>Module d'Archivage & CAP</p>
+            <h2 style={{ fontSize: 16, fontWeight: 900, color: 'var(--wg-text)', marginTop: 2, margin: '2px 0 0' }}>Registre des Rapports Légaux</h2>
+            <p style={{ fontSize: 10, color: 'var(--wg-muted)', marginTop: 2, margin: '2px 0 0' }}>Génération de bulletins d'alerte et transmission des fiches d'impacts au commandement national</p>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <div style={{ display: 'flex', gap: 2, borderRadius: 6, padding: 3, background: 'rgba(6,14,26,0.85)', border: '1px solid #1A2F4A' }}>
+            <div style={{ display: 'flex', gap: 2, borderRadius: 6, padding: 3, background: 'var(--wg-bg-deep)', border: '1px solid var(--wg-border)' }}>
               {FILTERS.map(f => (
                 <button key={f} onClick={() => setFilter(f)} style={{
                   borderRadius: 5, padding: '3px 8px', fontSize: 10, fontWeight: 700, cursor: 'pointer',
                   border: 'none', outline: 'none', transition: 'all 0.15s', fontFamily: 'Outfit, sans-serif',
-                  background: filter === f ? '#0E7490' : 'transparent',
-                  color: filter === f ? '#fff' : '#8BA3BE',
+                  background: filter === f ? 'var(--wg-blue)' : 'transparent',
+                  color: filter === f ? '#fff' : 'var(--wg-muted)',
                 }}>{f}</button>
               ))}
             </div>
-            <button onClick={onOpenReport} className="btn btn-primary" style={{ gap: 5, fontSize: 11 }}>
+            <button onClick={onOpenReport} className="btn btn-primary" style={{ gap: 5, fontSize: 11, height: 28 }}>
               <Plus size={12} /> Nouveau rapport
             </button>
           </div>
@@ -104,36 +104,36 @@ export default function RapportsView({ logs, liveAssets, phase, scenario, conseq
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 8 }}>
         {[
           { icon: FileText,      label: 'Rapports totaux',     value: HISTORY.length,     color: '#4A9FE0' },
-          { icon: AlertTriangle, label: 'Alertes ROUGE+',      value: redPlus,            color: '#EF4444' },
-          { icon: CheckCircle2,  label: 'Fausses alarmes évitées', value: falseAlarms,    color: '#22C55E' },
-          { icon: Users,         label: 'Population notifiée', value: formatNum(totalPop), color: '#F59E0B' },
-          { icon: Clock,         label: 'Temps moyen réponse', value: `${avgResponse}s`,  color: '#00F0FF' },
+          { icon: AlertTriangle, label: 'Alertes ROUGE+',      value: redPlus,            color: 'var(--wg-red)' },
+          { icon: CheckCircle2,  label: 'Fausses alarmes évitées', value: falseAlarms,    color: 'var(--wg-green)' },
+          { icon: Users,         label: 'Population notifiée', value: formatNum(totalPop), color: 'var(--wg-orange)' },
+          { icon: Clock,         label: 'Temps moyen réponse', value: `${avgResponse}s`,  color: 'var(--wg-cyan)' },
           { icon: ShieldCheck,   label: 'Rapports CAP générés', value: redPlus,           color: '#8B5CF6' },
         ].map(({ icon: Icon, label, value, color }) => (
           <div key={label} style={S.kpi}>
-            <Icon size={12} color={color} />
-            <p style={{ fontSize: 7.5, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#8BA3BE' }}>{label}</p>
-            <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 18, fontWeight: 700, color }}>{value}</p>
+            <Icon size={13} color={color} style={{ marginBottom: 2 }} />
+            <p style={{ fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--wg-muted)', margin: 0 }}>{label}</p>
+            <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 18, fontWeight: 700, color, margin: 0 }}>{value}</p>
           </div>
         ))}
       </div>
 
       {/* Two-column: Table + CAP Preview */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 10 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 330px', gap: 10 }}>
         {/* Table */}
         <div style={{ ...S.card, padding: 0, overflow: 'hidden' }}>
-          <div style={{ padding: '10px 14px', borderBottom: '1px solid #1A2F4A', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <p className="section-label" style={{ fontSize: 9 }}>Historique ({filtered.length} rapport{filtered.length !== 1 ? 's' : ''})</p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 10, color: '#8BA3BE' }}>
-              <Calendar size={10} /> Filtre : {filter}
+          <div style={{ padding: '10px 14px', borderBottom: '1px solid var(--wg-border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <p className="section-label" style={{ fontSize: 10, margin: 0 }}>Historique ({filtered.length} rapport{filtered.length !== 1 ? 's' : ''})</p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 10, color: 'var(--wg-muted)' }}>
+              <Calendar size={11} /> Filtre : {filter}
             </div>
           </div>
           <div style={{ overflowX: 'auto', maxHeight: 280, overflowY: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 11 }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 11.5 }}>
               <thead>
-                <tr style={{ background: 'rgba(6,14,26,0.7)', borderBottom: '1px solid #1A2F4A', position: 'sticky', top: 0, zIndex: 1 }}>
+                <tr style={{ background: 'var(--wg-bg-deep)', borderBottom: '1px solid var(--wg-border)', position: 'sticky', top: 0, zIndex: 1 }}>
                   {['Réf.', 'Date', 'Scénario', 'Niveau', 'Pop.', 'Éq.', 'Rép.', 'Actions'].map(h => (
-                    <th key={h} style={{ padding: '6px 8px', textAlign: 'left', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600, color: '#8BA3BE' }}>{h}</th>
+                    <th key={h} style={{ padding: '6px 8px', textAlign: 'left', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600, color: 'var(--wg-muted)' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -141,22 +141,22 @@ export default function RapportsView({ logs, liveAssets, phase, scenario, conseq
                 {filtered.map((r, i) => {
                   const c = levelColor(r.level);
                   return (
-                    <tr key={r.ref} style={{ borderTop: '1px solid #1A2F4A', background: i % 2 === 0 ? 'rgba(6,14,26,0.3)' : 'transparent' }}>
-                      <td style={{ padding: '5px 8px', fontFamily: 'JetBrains Mono,monospace', fontWeight: 700, color: '#4A9FE0', fontSize: 9.5 }}>{r.ref}</td>
-                      <td style={{ padding: '5px 8px', color: '#8BA3BE', fontSize: 10 }}>{r.date}</td>
-                      <td style={{ padding: '5px 8px', fontWeight: 600, color: '#E8F4FD', fontSize: 10 }}>{r.scenario}</td>
-                      <td style={{ padding: '5px 8px' }}>
-                        <span style={{ borderRadius: 4, padding: '1px 6px', fontSize: 8, fontWeight: 700, textTransform: 'uppercase', color: c, background: levelSoft(r.level), border: `1px solid ${c}30` }}>
+                    <tr key={r.ref} style={{ borderBottom: '1px solid var(--wg-border)', background: i % 2 === 0 ? 'var(--wg-bg-deep)' : 'transparent' }}>
+                      <td style={{ padding: '6px 8px', fontFamily: 'JetBrains Mono,monospace', fontWeight: 700, color: '#4A9FE0', fontSize: 10.5 }}>{r.ref}</td>
+                      <td style={{ padding: '6px 8px', color: 'var(--wg-muted)', fontSize: 10.5 }}>{r.date}</td>
+                      <td style={{ padding: '6px 8px', fontWeight: 600, color: 'var(--wg-text)', fontSize: 11 }}>{r.scenario}</td>
+                      <td style={{ padding: '6px 8px' }}>
+                        <span style={{ borderRadius: 4, padding: '1.5px 6px', fontSize: 8.5, fontWeight: 700, textTransform: 'uppercase', color: c, background: levelSoft(r.level), border: `1px solid ${c}30` }}>
                           {LEVELS[r.level].label}
                         </span>
                       </td>
-                      <td style={{ padding: '5px 8px', fontFamily: 'JetBrains Mono,monospace', color: r.pop > 0 ? '#F59E0B' : '#8BA3BE', fontSize: 10 }}>{r.pop > 0 ? formatNum(r.pop) : '—'}</td>
-                      <td style={{ padding: '5px 8px', fontFamily: 'JetBrains Mono,monospace', color: '#4A9FE0', fontSize: 10 }}>{r.teams > 0 ? r.teams : '—'}</td>
-                      <td style={{ padding: '5px 8px', fontFamily: 'JetBrains Mono,monospace', color: '#00F0FF', fontSize: 10 }}>{r.responseTime}</td>
-                      <td style={{ padding: '5px 8px' }}>
+                      <td style={{ padding: '6px 8px', fontFamily: 'JetBrains Mono,monospace', color: r.pop > 0 ? 'var(--wg-orange)' : 'var(--wg-muted)', fontSize: 11 }}>{r.pop > 0 ? formatNum(r.pop) : '—'}</td>
+                      <td style={{ padding: '6px 8px', fontFamily: 'JetBrains Mono,monospace', color: '#4A9FE0', fontSize: 11 }}>{r.teams > 0 ? r.teams : '—'}</td>
+                      <td style={{ padding: '6px 8px', fontFamily: 'JetBrains Mono,monospace', color: 'var(--wg-cyan)', fontSize: 11 }}>{r.responseTime}</td>
+                      <td style={{ padding: '6px 8px' }}>
                         <div style={{ display: 'flex', gap: 3 }}>
-                          <button onClick={onOpenReport} className="btn btn-ghost" style={{ padding: '2px 6px', fontSize: 9 }}>Voir</button>
-                          <button onClick={() => window.print()} className="btn btn-ghost" style={{ padding: '2px 6px', fontSize: 9 }}>PDF</button>
+                          <button onClick={onOpenReport} className="btn btn-ghost" style={{ padding: '3px 8px', fontSize: 9.5, height: 20 }}>Voir</button>
+                          <button onClick={() => window.print()} className="btn btn-ghost" style={{ padding: '3px 8px', fontSize: 9.5, height: 20 }}>PDF</button>
                         </div>
                       </td>
                     </tr>
@@ -176,11 +176,11 @@ export default function RapportsView({ logs, liveAssets, phase, scenario, conseq
       {/* Log excerpt */}
       {logs.length > 0 && (
         <div style={S.card}>
-          <p className="section-label" style={{ fontSize: 9, marginBottom: 8 }}>Derniers événements — session en cours</p>
-          <div style={{ borderRadius: 6, padding: 8, background: '#060E1A', border: '1px solid #1A2F4A', maxHeight: 140, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <p className="section-label" style={{ marginBottom: 8 }}>Derniers événements — session en cours</p>
+          <div style={{ borderRadius: 6, padding: 8, background: 'var(--wg-bg-deep)', border: '1px solid var(--wg-border)', maxHeight: 140, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 2 }}>
             {logs.slice(0, 8).map((log, i) => (
-              <div key={i} className="log-entry" style={{ color: LEVELS[log.level]?.color ?? '#8BA3BE' }}>
-                <span style={{ color: '#8BA3BE', fontSize: 9 }}>[{log.at}]</span> {log.text}
+              <div key={i} className="log-entry" style={{ color: LEVELS[log.level]?.color ?? 'var(--wg-muted)' }}>
+                <span style={{ color: 'var(--wg-muted)', fontSize: 9.5 }}>[{log.at}]</span> {log.text}
               </div>
             ))}
           </div>

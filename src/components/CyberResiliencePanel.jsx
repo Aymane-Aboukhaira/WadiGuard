@@ -14,21 +14,21 @@ const ROWS = [
 const statusStyle = (value) => {
   const v = (value || '').toLowerCase();
   if (v === 'active' || v === 'immutable' || v === '4g/lte')
-    return { color: '#22C55E', bg: 'rgba(34,197,94,0.08)', border: 'rgba(34,197,94,0.2)', label: value.toUpperCase() };
-  if (v.includes('down') || v.includes('perte'))
-    return { color: '#EF4444', bg: 'rgba(239,68,68,0.1)', border: 'rgba(239,68,68,0.25)', label: '⛔ DOWN' };
+    return { color: 'var(--wg-green)', bg: 'rgba(5,150,105,0.08)', border: 'rgba(5,150,105,0.2)', label: value.toUpperCase() };
+  if (v.includes('down') || v.includes('perte') || v.includes('inactif'))
+    return { color: 'var(--wg-red)', bg: 'rgba(220,38,38,0.1)', border: 'rgba(220,38,38,0.25)', label: 'DOWN' };
   if (v.includes('standby'))
     return { color: 'var(--wg-muted)', bg: 'rgba(127,142,159,0.05)', border: 'var(--wg-border)', label: 'STANDBY' };
   if (v.includes('lora active') || v.includes('lora'))
-    return { color: '#F59E0B', bg: 'rgba(245,158,11,0.1)', border: 'rgba(245,158,11,0.25)', label: '📡 LORA ACTIF' };
+    return { color: 'var(--wg-orange)', bg: 'rgba(217,119,6,0.1)', border: 'rgba(217,119,6,0.25)', label: 'LORA ACTIF' };
   if (v === 'local' || v.includes('edge'))
-    return { color: '#00F0FF', bg: 'rgba(0,240,255,0.06)', border: 'rgba(0,240,255,0.2)', label: '⚡ LOCAL' };
+    return { color: 'var(--wg-cyan)', bg: 'rgba(0,240,255,0.06)', border: 'rgba(0,240,255,0.2)', label: 'LOCAL' };
   if (v === 'degraded' || v.includes('dégradé'))
-    return { color: '#F59E0B', bg: 'rgba(245,158,11,0.08)', border: 'rgba(245,158,11,0.2)', label: '⚠️ DÉGRADÉ' };
+    return { color: 'var(--wg-orange)', bg: 'rgba(217,119,6,0.08)', border: 'rgba(217,119,6,0.2)', label: 'DÉGRADÉ' };
   if (v === 'none' || v === 'no threat')
-    return { color: '#22C55E', bg: 'rgba(34,197,94,0.06)', border: 'rgba(34,197,94,0.15)', label: 'AUCUN' };
+    return { color: 'var(--wg-green)', bg: 'rgba(5,150,105,0.06)', border: 'rgba(5,150,105,0.15)', label: 'AUCUN' };
   if (v.includes('isolated') || v.includes('isolé'))
-    return { color: '#EF4444', bg: 'rgba(239,68,68,0.1)', border: 'rgba(239,68,68,0.25)', label: 'ISOLÉ' };
+    return { color: 'var(--wg-red)', bg: 'rgba(220,38,38,0.1)', border: 'rgba(220,38,38,0.25)', label: 'ISOLÉ' };
   return { color: 'var(--wg-muted)', bg: 'transparent', border: 'var(--wg-border)', label: value };
 };
 
@@ -47,16 +47,16 @@ function CyberResiliencePanel({ cyberState }) {
           <div key={row.key} style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             padding: '2px 5px', borderRadius: 3,
-            background: st.color === '#EF4444' ? 'rgba(239,68,68,0.03)' : 'rgba(255,255,255,0.01)',
+            background: st.color === 'var(--wg-red)' ? 'rgba(220,38,38,0.03)' : 'rgba(255,255,255,0.01)',
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 4, minWidth: 0 }}>
-              <Icon size={9} color={st.color} style={{ flexShrink: 0 }} />
-              <span style={{ fontSize: 9, color: '#E2E8F0', fontWeight: 500, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              <Icon size={10} color={st.color} style={{ flexShrink: 0 }} />
+              <span style={{ fontSize: 10, color: 'var(--wg-text)', fontWeight: 500, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {row.label}
               </span>
             </div>
             <span className="mono-precision" style={{
-              fontSize: 7, fontWeight: 700, padding: '1px 4px', borderRadius: 3,
+              fontSize: 8, fontWeight: 700, padding: '1px 4px', borderRadius: 3,
               background: st.bg, border: `1px solid ${st.border}`, color: st.color,
               letterSpacing: '0.03em', whiteSpace: 'nowrap', flexShrink: 0,
             }}>
@@ -69,9 +69,9 @@ function CyberResiliencePanel({ cyberState }) {
       {/* Fallback status message */}
       {isFallback && (
         <div style={{
-          marginTop: 2, padding: '3px 6px', borderRadius: 4,
-          background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.15)',
-          fontSize: 8, color: '#F59E0B', fontWeight: 600, textAlign: 'center',
+          marginTop: 4, padding: '4px 6px', borderRadius: 4,
+          background: 'rgba(217,119,6,0.06)', border: '1px solid rgba(217,119,6,0.15)',
+          fontSize: 9, color: 'var(--wg-orange)', fontWeight: 600, textAlign: 'center',
         }}>
           Perte 4G simulée — bascule LoRa — décision locale maintenue
         </div>

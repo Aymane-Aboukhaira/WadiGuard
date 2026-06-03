@@ -21,7 +21,34 @@
   --level-color:    #10B981;
   --level-soft:     rgba(16,185,129,.08);
   --level-glow:     rgba(16,185,129,.15);
+  --wg-shadow:      rgba(0, 0, 0, 0.4);
 }
+
+/* ─── Light Mode Theme ────────────────────────────────────── */
+.theme-light {
+  --wg-bg:          #F4F7FB; /* Clean white-gray backplate */
+  --wg-bg-deep:     #E9EFF6; /* Pale blue-gray deep background */
+  --wg-surface:     #FFFFFF; /* White surfaces */
+  --wg-surface-2:   #F8FAFC; /* Extra clean sub-surfaces */
+  --wg-border:      #D7E0EA; /* Soft visible light borders */
+  --wg-blue:        #0E7490;
+  --wg-cyan:        #0891B2; /* Cyber teal adapted for white contrast */
+  --wg-text:        #0F172A; /* Dark slate text */
+  --wg-muted:       #64748B; /* Slate muted text */
+  --wg-green:       #059669; /* Rich dark-green */
+  --wg-orange:      #D97706; /* Rich dark-amber */
+  --wg-red:         #DC2626; /* Crimson red */
+  --wg-black-alert: #991B1B; /* Dark red */
+  --level-color:    #059669;
+  --level-soft:     rgba(5,150,105,.08);
+  --level-glow:     rgba(5,150,105,.15);
+  --wg-shadow:      rgba(15, 23, 42, 0.08);
+}
+
+.theme-light.app-level-green  { --level-color: #059669; --level-soft: rgba(5,150,105,.08);  --level-glow: rgba(5,150,105,.15); }
+.theme-light.app-level-orange { --level-color: #D97706; --level-soft: rgba(217,119,6,.1);   --level-glow: rgba(217,119,6,.2); }
+.theme-light.app-level-red    { --level-color: #DC2626; --level-soft: rgba(220,38,38,.12);   --level-glow: rgba(220,38,38,.25); }
+.theme-light.app-level-black  { --level-color: #DC2626; --level-soft: rgba(153,27,27,.2);    --level-glow: rgba(220,38,38,.3); }
 
 html, body, #root {
   height: 100%;
@@ -610,6 +637,112 @@ html, body, #root {
 }
 .jury-launch-btn {
   animation: jury-pulse 3s ease-in-out infinite;
+}
+
+/* ─── Collapsible Sections (Centre de Décision) ───────────── */
+.collapsible-section {
+  border: 1px solid var(--wg-border);
+  border-radius: 6px;
+  margin-bottom: 6px;
+  overflow: hidden;
+  background: var(--wg-surface);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.collapsible-section.active-stage {
+  border-color: var(--level-color);
+  box-shadow: 0 0 10px var(--level-soft);
+}
+.collapsible-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  cursor: pointer;
+  background: var(--wg-bg-deep);
+  user-select: none;
+  transition: background 0.15s ease;
+  border-bottom: 1px solid transparent;
+}
+.collapsible-header:hover {
+  background: var(--wg-surface-2);
+}
+.collapsible-section.expanded .collapsible-header {
+  border-bottom-color: var(--wg-border);
+}
+.collapsible-header-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--wg-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.collapsible-header-badge {
+  font-size: 8px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: rgba(127,142,159,0.1);
+  color: var(--wg-muted);
+  border: 1px solid var(--wg-border);
+}
+.collapsible-header-badge.active {
+  background: var(--level-soft);
+  color: var(--level-color);
+  border-color: var(--level-color);
+}
+.collapsible-content {
+  padding: 10px;
+  background: var(--wg-surface);
+}
+
+/* ─── Scene Focus & Dimming ──────────────────────────────── */
+.scene-focus {
+  border-color: var(--level-color) !important;
+  box-shadow: 0 0 16px var(--level-glow) !important;
+  z-index: 10;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.scene-dimmed {
+  opacity: 0.35 !important;
+  filter: grayscale(40%) !important;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.focus-contour {
+  outline: 2px solid var(--level-color) !important;
+  outline-offset: 2px;
+}
+@keyframes soft-pulse-focus {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(0, 240, 255, 0); }
+}
+.focus-pulse {
+  animation: soft-pulse-focus 2s infinite;
+}
+
+/* ─── Typography & Readability Refinements ───────────────── */
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+.section-title {
+  font-size: 13px;
+}
+.log-entry {
+  font-size: 10.5px;
+  padding: 4px 8px;
+}
+.tab-btn {
+  font-size: 12px;
+}
+.btn {
+  font-size: 12px;
 }
 
 /* ─── Print styles ────────────────────────────────────────── */

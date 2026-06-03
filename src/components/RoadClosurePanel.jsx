@@ -26,15 +26,16 @@ function RoadClosurePanel({ phase, consequences, liveAssets }) {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
       {gates.map((gate, i) => (
         <div key={i} style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          display: 'flex', alignItems: 'center', justifycontent: 'space-between',
           padding: '3px 6px', borderRadius: 4,
           background: gate.closed ? 'rgba(239,68,68,0.06)' : 'rgba(34,197,94,0.03)',
-          borderLeft: `2px solid ${gate.closed ? '#EF4444' : '#22C55E'}`,
+          borderLeft: `2px solid ${gate.closed ? 'var(--wg-red)' : 'var(--wg-green)'}`,
+          justifyContent: 'space-between'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 4, minWidth: 0 }}>
-            {gate.closed ? <Ban size={9} color="#EF4444" /> : <Car size={9} color="#22C55E" />}
+            {gate.closed ? <Ban size={10} color="var(--wg-red)" /> : <Car size={10} color="var(--wg-green)" />}
             <span style={{
-              fontSize: 9, color: '#E2E8F0', fontWeight: 600,
+              fontSize: 10, color: 'var(--wg-text)', fontWeight: 600,
               overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
             }}>
               {gate.name}
@@ -43,26 +44,27 @@ function RoadClosurePanel({ phase, consequences, liveAssets }) {
           <span className="mono-precision" style={{
             fontSize: 7.5, fontWeight: 800, padding: '1px 5px', borderRadius: 3,
             letterSpacing: '0.04em', flexShrink: 0,
-            color: gate.closed ? '#fff' : '#22C55E',
-            background: gate.closed ? 'rgba(239,68,68,0.85)' : 'rgba(34,197,94,0.08)',
-            border: `1px solid ${gate.closed ? '#EF4444' : 'rgba(34,197,94,0.2)'}`,
-            animation: gate.closed ? 'blink 1.5s infinite' : 'none',
+            color: gate.closed ? '#fff' : 'var(--wg-green)',
+            background: gate.closed ? 'var(--wg-red)' : 'rgba(34,197,94,0.08)',
+            border: `1px solid ${gate.closed ? 'var(--wg-red)' : 'rgba(34,197,94,0.2)'}`,
+            animation: gate.closed ? 'blink 1.2s infinite' : 'none',
           }}>
-            {gate.closed ? '🚧 FERMÉ' : 'OUVERT'}
+            {gate.closed ? 'FERMÉ' : 'OUVERT'}
           </span>
         </div>
       ))}
 
       {/* Summary */}
       <div style={{
-        padding: '3px 6px', borderRadius: 3, textAlign: 'center',
-        fontSize: 8, fontWeight: 700,
-        color: closedCount > 0 ? '#EF4444' : '#22C55E',
+        padding: '4px 6px', borderRadius: 4, textAlign: 'center',
+        fontSize: 9, fontWeight: 700,
+        color: closedCount > 0 ? 'var(--wg-red)' : 'var(--wg-green)',
         background: closedCount > 0 ? 'rgba(239,68,68,0.04)' : 'rgba(34,197,94,0.03)',
+        border: `1px solid ${closedCount > 0 ? 'rgba(239,68,68,0.1)' : 'rgba(34,197,94,0.08)'}`,
       }}>
         {closedCount > 0
-          ? `${closedCount} route(s) fermée(s) — citoyens protégés`
-          : 'Toutes les routes ouvertes — circulation normale'}
+          ? `${closedCount} route(s) fermée(s) — citoyens sécurisés`
+          : 'Toutes les routes ouvertes — circulation nominale'}
       </div>
     </div>
   );

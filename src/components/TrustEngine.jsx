@@ -35,15 +35,15 @@ function TrustEngine({ phase }) {
   }, [isActive, isAlert, isFalseAlarm, phase]);
 
   const verdict = useMemo(() => {
-    if (!isActive) return { text: 'Surveillance nominale', color: '#22C55E', bg: 'rgba(34,197,94,0.06)' };
-    if (isFalseAlarm) return { text: 'FAUSSE ALARME REJETÉE — aucune sirène déclenchée', color: '#22C55E', bg: 'rgba(34,197,94,0.08)' };
-    return { text: 'ALERTE VALIDÉE — crue réelle confirmée', color: '#EF4444', bg: 'rgba(239,68,68,0.08)' };
+    if (!isActive) return { text: 'Surveillance nominale', color: 'var(--wg-green)', bg: 'rgba(16,185,129,0.06)' };
+    if (isFalseAlarm) return { text: 'FAUSSE ALARME REJETÉE — aucune sirène déclenchée', color: 'var(--wg-green)', bg: 'rgba(16,185,129,0.08)' };
+    return { text: 'ALERTE VALIDÉE — crue réelle confirmée', color: 'var(--wg-red)', bg: 'rgba(239,68,68,0.08)' };
   }, [isActive, isFalseAlarm]);
 
   const statusColor = (s) => {
-    if (s === 'alert') return '#EF4444';
-    if (s === 'warning') return '#F59E0B';
-    if (s === 'normal') return '#22C55E';
+    if (s === 'alert') return 'var(--wg-red)';
+    if (s === 'warning') return 'var(--wg-orange)';
+    if (s === 'normal') return 'var(--wg-green)';
     return 'var(--wg-muted)';
   };
 
@@ -61,12 +61,12 @@ function TrustEngine({ phase }) {
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
               <Icon size={8} color={sc} />
-              <span style={{ fontSize: 9, color: '#E2E8F0' }}>{check.label}</span>
+              <span style={{ fontSize: 10, color: 'var(--wg-text)' }}>{check.label}</span>
             </div>
             <span className="mono-precision" style={{
               fontSize: 8, fontWeight: 700, color: sc,
               padding: '0px 4px', borderRadius: 2,
-              background: `${sc}10`,
+              background: `color-mix(in srgb, ${sc} 10%, transparent)`,
             }}>
               {check.value}
             </span>
@@ -76,18 +76,18 @@ function TrustEngine({ phase }) {
 
       {/* Confidence + Verdict */}
       <div style={{
-        marginTop: 2, padding: '4px 6px', borderRadius: 4,
-        background: verdict.bg, border: `1px solid ${verdict.color}20`,
+        marginTop: 4, padding: '5px 8px', borderRadius: 4,
+        background: verdict.bg, border: `1px solid color-mix(in srgb, ${verdict.color} 20%, transparent)`,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
-        <span style={{ fontSize: 8, fontWeight: 800, color: verdict.color, letterSpacing: '0.04em' }}>
+        <span style={{ fontSize: 9, fontWeight: 800, color: verdict.color, letterSpacing: '0.04em' }}>
           {verdict.text}
         </span>
         {isActive && (
           <span className="mono-precision" style={{
-            fontSize: 9, fontWeight: 800, color: isFalseAlarm ? '#F59E0B' : '#22C55E',
+            fontSize: 9, fontWeight: 800, color: isFalseAlarm ? 'var(--wg-orange)' : 'var(--wg-green)',
             padding: '0 4px', borderRadius: 3,
-            background: isFalseAlarm ? 'rgba(245,158,11,0.1)' : 'rgba(34,197,94,0.1)',
+            background: isFalseAlarm ? 'rgba(217,119,6,0.1)' : 'rgba(5,150,105,0.1)',
           }}>
             {confidence}
           </span>
