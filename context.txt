@@ -1,0 +1,239 @@
+
+
+**PROJET**
+WadiGuard est un système marocain d'alerte précoce aux crues. Des capteurs IoT placés en amont sur un wadi (oued) détectent la montée des eaux, le système prédit la zone affectée, génère des alertes multi-canaux (SMS, WhatsApp, sirènes, panneaux LED), et bloque automatiquement les routes dangereuses — le tout sans intervention humaine. Ce dashboard est l'interface centrale pour les autorités (Protection Civile, DGM, municipalité).
+
+---
+
+**STACK IMPOSÉE**
+React + Tailwind CSS + Recharts (graphiques) + Leaflet (carte) + Lucide React (icônes). Tout en un seul fichier JSX. Aucun backend — toutes les données sont simulées/hardcodées avec des timers JavaScript.
+
+---
+
+**PALETTE DE COULEURS**
+```
+Background principal : #0A1628
+Surface cards : #0F1E35
+Bordures subtiles : #1A2F4A
+Accent bleu : #2E75B6
+Bleu clair : #4A9FE0
+Texte principal : #E8F4FD
+Texte secondaire : #8BA3BE
+VERT (niveau safe) : #22C55E
+ORANGE (alerte intermédiaire) : #F59E0B
+ROUGE (alerte critique) : #EF4444
+Rouge pulsant : animation pulse CSS sur #EF4444
+```
+Typo : `font-family: 'JetBrains Mono', monospace` pour les valeurs capteurs ; sans-serif propre (Outfit ou DM Sans via Google Fonts) pour les labels.
+
+---
+
+**LAYOUT GÉNÉRAL — 3 colonnes + topbar**
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  TOPBAR : Logo WadiGuard | Statut système | Heure live  │
+├──────────────┬──────────────────────────┬───────────────┤
+│  LEFT PANEL  │     CENTRE : CARTE       │  RIGHT PANEL  │
+│  Sensor List │     Leaflet Map          │  Alert Level  │
+│  UAP-01      │     Tanger region        │  Water Gauge  │
+│  UAP-02      │     Wadi line            │  Rainfall Bar │
+│  DNP-01      │     Sensor markers       │  Notif Feed   │
+│              │     LED panels icons     │               │
+├──────────────┴──────────────────────────┴───────────────┤
+│  BOTTOM BAR : Sensors online | Battery % | Last sync    │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+**COMPOSANT 1 — TOPBAR**
+- Gauche : `WadiGuard` en blanc gras, `V3` en badge bleu, `· SMIC 2026` en gris
+- Centre : badge animé `● SYSTÈME OPÉRATIONNEL` en vert qui pulse doucement
+- Droite : heure en temps réel (JS setInterval, format HH:MM:SS), date courte
+
+---
+
+**COMPOSANT 2 — LEFT PANEL : Sensor List**
+
+3 cartes verticales, une par nœud :
+
+**UAP-01** — Upstream 25km
+- Dot de statut (vert/orange/rouge selon scénario)
+- Valeur niveau eau : `47 cm` → monte pendant le scénario
+- Batterie : `87%` (barre horizontale verte)
+- Dernière sync : `il y a 12s`
+- Protocole : badge `LoRa 868MHz`
+
+**UAP-02** — Upstream 15km
+- Même structure, valeur `34 cm`
+- Batterie `79%`
+- Badge `4G / LoRa`
+
+**DNP-01** — Pont (Bridge sensor)
+- Valeur `28 cm`
+- Batterie `91%`
+- Badge `4G`
+- Icône pont (Lucide: `Bridge` ou un SVG inline)
+
+Chaque carte a une fine bordure gauche colorée selon le statut (vert/orange/rouge).
+
+---
+
+**COMPOSANT 3 — CARTE LEAFLET (centre)**
+
+Centre de la carte : `35.7595° N, -5.8340° W` (Tanger, Maroc), zoom 11.
+
+Éléments sur la carte :
+1. **Ligne bleue** le long du wadi (Oued Mghogha ou similaire) — polyline bleue épaisse avec légère transparence
+2. **3 markers capteurs** custom (icône radar SVG inline, couleur selon statut) aux coordonnées :
+   - UAP-01 : `35.680, -5.720` (25km amont)
+   - UAP-02 : `35.700, -5.760` (15km amont)
+   - DNP-01 : `35.740, -5.800` (pont)
+3. **2 icônes panneaux LED** (rectangle rouge/vert selon alerte) sur la route principale
+4. **Polygon semi-transparent rouge** sur la zone ville basse de Tanger qui apparaît en alerte ROUGE (zone d'impact prédite)
+5. **Popup au clic** sur chaque marker : nom, valeur actuelle, statut
+
+Tile layer : `CartoDB Dark Matter` (tiles sombres, parfait pour le thème) → URL : `https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png`
+
+---
+
+**COMPOSANT 4 — RIGHT PANEL**
+
+**Alert Level Badge** (en haut, grand) :
+- Un grand badge centré : `NIVEAU VERT / ORANGE / ROUGE`
+- Texte associé : `Situation normale` / `Surveillance renforcée` / `ALERTE MAXIMALE`
+- En rouge : animation `animate-pulse` sur tout le badge + border rouge clignotante
+
+**Water Level Gauge** (jauge circulaire ou arc) :
+- Valeur en % (0–100%), grande, police monospace
+- Arc coloré : vert < 50%, orange 50–75%, rouge > 75%
+- Label sous la jauge : `Niveau pont DNP-01`
+
+**Rainfall Meter** :
+- Barre verticale ou horizontale animée
+- Valeur en mm/h : `12 mm/h` → monte pendant scénario
+- Label : `Précipitations amont`
+
+**Notification Feed** (scrollable, en bas du right panel) :
+- Liste de logs horodatés qui se remplissent pendant le scénario
+- Style terminal/log : fond `#060E1A`, texte monospace
+- Chaque ligne : `[14:32:07] 🟠 UAP-01 · Niveau anormal détecté`
+- Couleur selon sévérité : vert, orange, rouge
+
+---
+
+**COMPOSANT 5 — BOTTOM BAR**
+Barre fine en bas :
+- `3/3 Capteurs en ligne` · `● Live`
+- `Batterie moy. : 85%`
+- `Dernière sync : il y a 8s`
+- `Alertes aujourd'hui : 0` → change pendant le scénario
+- `Mode : Surveillance active`
+
+---
+
+**BOUTONS SCÉNARIO (en haut, bien visibles)**
+
+```
+[ ▶ LANCER SCÉNARIO 1 — CRUE ]    [ ▶ SCÉNARIO 2 — FAUSSE ALARME ]    [ ↺ RESET ]
+```
+
+---
+
+**SCÉNARIO 1 — CRUE (séquence temporelle JS)**
+
+```
+T+0s   : UAP-01 niveau passe à 89cm, dot → ORANGE
+         Badge système → ORANGE
+         Log : "[XX:XX:XX] 🟠 UAP-01 · Montée anormale détectée — 89cm"
+
+T+3s   : UAP-02 niveau passe à 67cm
+         Log : "[XX:XX:XX] 🟠 UAP-02 · Confirmation amont — 67cm"
+         Log : "[XX:XX:XX] 📱 SMS envoyé — Protection Civile Tanger"
+         Log : "[XX:XX:XX] 💬 WhatsApp dispatché — Autorités locales"
+
+T+6s   : Rainfall spike → 47mm/h
+
+T+10s  : DNP-01 niveau passe à 78% (critique)
+          Tous dots → ROUGE
+          Badge → ROUGE avec animate-pulse
+          Polygon zone impact apparaît sur la carte (rouge semi-transparent)
+          Panneaux LED → rouge "ROUTE FERMÉE"
+          Log : "[XX:XX:XX] 🔴 DNP-01 · SEUIL CRITIQUE — 78%"
+          Log : "[XX:XX:XX] 🚨 ALERTE ROUGE DÉCLENCHÉE — 8 canaux activés"
+          Log : "[XX:XX:XX] 🔊 Sirènes activées — Zone pont"
+          Log : "[XX:XX:XX] 🚧 Panneaux LED → ROUTE FERMÉE"
+          Log : "[XX:XX:XX] 📧 Email autorités envoyé"
+          Log : "[XX:XX:XX] 📱 App mobile — Notification push"
+
+T+20s  : Bouton "📄 GÉNÉRER RAPPORT PDF" apparaît dans le right panel (bouton bleu)
+          Log : "[XX:XX:XX] 📋 Rapport d'événement généré — Réf. WG-2026-001"
+
+Compteur d'alertes en bas → "Alertes aujourd'hui : 1"
+```
+
+---
+
+**SCÉNARIO 2 — FAUSSE ALARME (anti-false-positive logic)**
+
+```
+T+0s   : UAP-01 spike capteur ultrasons → 95cm
+          Badge → ORANGE
+          Log : "[XX:XX:XX] 🟠 UAP-01 · Anomalie détectée (ultrasons) — 95cm"
+
+T+3s   : Capteur pression UAP-01 ne confirme PAS
+          Log : "[XX:XX:XX] ⚠️  Validation croisée — Pression normale (capteur 2)"
+          Log : "[XX:XX:XX] 🤖 TinyML · Anomalie classifiée : bruit électronique"
+
+T+6s   : Système reste ORANGE, ne passe PAS rouge
+          Log : "[XX:XX:XX] 🟠 Maintien ORANGE — Confirmation insuffisante"
+          Log : "[XX:XX:XX] ✅ Déclenchement ROUGE annulé — Protocole anti-fausse-alarme"
+
+T+10s  : Retour automatique VERT
+          Log : "[XX:XX:XX] 🟢 Retour niveau normal — Fausse alarme confirmée"
+          Badge → VERT
+          Log : "[XX:XX:XX] 📋 Incident loggé pour audit — Réf. WG-FA-001"
+```
+
+---
+
+**RAPPORT PDF (bouton)**
+Quand le bouton apparaît après Scénario 1, au clic : afficher un **modal overlay** avec un faux rapport stylisé :
+```
+┌──────────────────────────────────────────┐
+│  🌊 WadiGuard V3 · RAPPORT D'ÉVÉNEMENT  │
+│  Réf. : WG-2026-001 · 03/06/2026        │
+│  ─────────────────────────────────────  │
+│  Durée alerte : 20s → Niveau MAX : 78%  │
+│  Canaux activés : 8/8                   │
+│  Fausses alertes : 0                    │
+│  Zones impactées : Quartier bas Tanger  │
+│  Statut : RÉSOLU                        │
+│  [Exporter CSV]  [Fermer]               │
+└──────────────────────────────────────────┘
+```
+
+---
+
+**ANIMATIONS CLÉS**
+- Dots de statut : `animate-pulse` CSS quand ROUGE
+- Badge alerte ROUGE : bordure clignotante + background pulse
+- Polygon carte : `opacity` qui monte de 0 à 0.4 en 1s (transition CSS)
+- Notification feed : chaque nouvelle ligne slide-in depuis le bas
+- Gauge arc : transition fluide sur la valeur (CSS transition 0.5s)
+- Markers carte : scale-up + glow rouge en alerte critique
+
+---
+
+**QUALITÉ VISUELLE ATTENDUE**
+- Rendu "salle de crise / NOC (Network Operations Center)" professionnel
+- Pas de blanc, pas de gris clair — tout en dark navy profond
+- Cartes capteurs avec légère glassmorphism (backdrop-blur + border 1px #1A2F4A)
+- Aucun emoji surdimensionné — les emojis sont uniquement dans les logs texte
+- Doit avoir l'air d'un vrai produit SaaS industriel, pas d'un projet étudiant
+
+---
+
+**CONTRAINTE FINALE**
+Tout en un seul fichier React JSX, zéro dépendance backend, données 100% simulées. Le jury doit pouvoir voir les deux scénarios s'enchaîner en live, sur un écran partagé, sans bug. La priorité absolue est que le Scénario 1 tourne parfaitement de bout en bout.
