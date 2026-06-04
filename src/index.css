@@ -437,8 +437,8 @@ html, body, #root {
   border-color: rgba(0,240,255,0.15);
   box-shadow: 0 0 6px rgba(0,240,255,0.06);
 }
-.kpi-value { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 17px; line-height: 1.15; }
-.kpi-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--wg-muted); }
+.kpi-value { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 20px; line-height: 1.15; }
+.kpi-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--wg-muted); }
 
 /* ─── Buttons ─────────────────────────────────────────────── */
 .btn {
@@ -522,14 +522,14 @@ html, body, #root {
 
 /* ─── Section labels ──────────────────────────────────────── */
 .section-label {
-  font-size: 11px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--wg-muted);
   font-weight: 600;
 }
 .section-title {
-  font-size: 14px; font-weight: 700; color: var(--wg-text);
+  font-size: 16px; font-weight: 700; color: var(--wg-text);
   margin-top: 1px; line-height: 1.3;
 }
 
