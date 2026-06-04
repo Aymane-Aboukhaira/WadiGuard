@@ -163,7 +163,7 @@ function IncidentPanel({
   };
 
   return (
-    <aside style={{ display: 'flex', flexDirection: 'column', gap: 4, minHeight: 0, overflowY: 'auto', overflowX: 'hidden', paddingRight: 2 }}>
+    <aside style={{ display: 'flex', flexDirection: 'column', gap: 4, flex: 'none', paddingRight: 2 }}>
 
       {/* ── Centre de Décision Header ── */}
       <div

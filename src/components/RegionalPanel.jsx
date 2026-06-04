@@ -186,7 +186,7 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
   };
 
   return (
-    <aside style={{ display: 'flex', flexDirection: 'column', gap: 10, minHeight: 0, overflow: 'hidden' }}>
+    <aside style={{ display: 'flex', flexDirection: 'column', gap: 10, flex: 'none' }}>
       
       {/* ── Regional Coverage Card ── */}
       <div className="glass" style={{ borderRadius: 'var(--radius-lg)', padding: 12, display: 'flex', flexDirection: 'column', flexShrink: 0 }}>
@@ -199,7 +199,7 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
         </div>
 
         {/* Regions list */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 4, overflowY: 'auto', maxHeight: '130px', paddingRight: 4 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4, paddingRight: 4 }}>
           {REGIONS_DATA.map((reg, idx) => {
             const styleCircle = getCircleColors(reg.level);
             const isSelected = province === reg.name;
@@ -248,7 +248,7 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
       {/* ── Asset Interactive Selector List ── */}
       <div className="glass" style={{ borderRadius: 'var(--radius-lg)', padding: '10px 12px', flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
         <p className="section-label" style={{ fontSize: '10px', flexShrink: 0 }}>Liste des actifs ({assets.length})</p>
-        <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 4, paddingRight: 4 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4, paddingRight: 4 }}>
           {assets.map(asset => {
             const isSelected = asset.id === selectedAsset.id;
             const color = levelColor(asset.status);

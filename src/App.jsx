@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { SimulationProvider, useSimulationContext } from './context/SimulationContext';
+import { Menu } from 'lucide-react';
 
 import TopBar        from './components/TopBar';
 import BottomStatus  from './components/BottomStatus';
@@ -46,6 +47,10 @@ function AppContent() {
 
   const [layers, setLayers] = useState({ dams: true, rivers: true, roads: true, impacts: true });
   const [assetModal, setAssetModal] = useState(null);
+
+  /* Drawer state */
+  const [leftOpen, setLeftOpen] = useState(window.innerWidth > 1024);
+  const [rightOpen, setRightOpen] = useState(window.innerWidth > 1024);
 
   /* Clock */
   const [clock, setClock] = useState(new Date());
@@ -99,17 +104,47 @@ function AppContent() {
       <div className="main-area">
         {/* ── Dashboard ── */}
         {tab === 'dashboard' && (
-          <div className="dashboard-grid">
-            <RegionalPanel
-              province={province}
-              setProvince={setProvince}
-              assets={visibleAssets}
-              selectedAsset={selectedAsset}
-              setSelectedAssetId={setSelectedAssetId}
-              onOpenAsset={(a) => setAssetModal(a)}
-              timelineData={timelineData}
-            />
-            <div className="dashboard-col">
+          <div className="dashboard-layout">
+            
+            {/* Left Drawer */}
+            <div className={`panel-drawer left ${leftOpen ? 'open' : 'closed'}`}>
+              <div className="panel-drawer-content" style={{ width: 310 }}>
+                <RegionalPanel
+                  province={province}
+                  setProvince={setProvince}
+                  assets={visibleAssets}
+                  selectedAsset={selectedAsset}
+                  setSelectedAssetId={setSelectedAssetId}
+                  onOpenAsset={(a) => setAssetModal(a)}
+                  timelineData={timelineData}
+                />
+              </div>
+            </div>
+
+            {/* Center Area */}
+            <div className="dashboard-center">
+              {!leftOpen && (
+                <button className="drawer-toggle left" onClick={() => setLeftOpen(true)} title="Ouvrir panneau régional">
+                  <Menu size={16} />
+                </button>
+              )}
+              {leftOpen && (
+                <button className="drawer-toggle left" onClick={() => setLeftOpen(false)} title="Fermer panneau" style={{ left: -10, top: 12, opacity: 0.5 }}>
+                  <Menu size={14} />
+                </button>
+              )}
+              
+              {!rightOpen && (
+                <button className="drawer-toggle right" onClick={() => setRightOpen(true)} title="Ouvrir panneau de décision">
+                  <Menu size={16} />
+                </button>
+              )}
+              {rightOpen && (
+                <button className="drawer-toggle right" onClick={() => setRightOpen(false)} title="Fermer panneau" style={{ right: -10, top: 12, opacity: 0.5 }}>
+                  <Menu size={14} />
+                </button>
+              )}
+
               <CommandCenter {...simProps} />
               <MapView {...mapProps} />
               <ImpactModel
@@ -122,19 +157,25 @@ function AppContent() {
                 activeChannels={activeChannels}
               />
             </div>
-            <IncidentPanel
-              level={phase.level}
-              phase={phase}
-              scenario={scenario}
-              consequences={consequences}
-              selectedAsset={selectedAsset}
-              logs={logs}
-              onGenerateReport={() => setReportModal(true)}
-              decisionStage={decisionStage}
-              activeChannels={activeChannels}
-              cyberState={cyberState}
-              liveAssets={assets}
-            />
+
+            {/* Right Drawer */}
+            <div className={`panel-drawer right ${rightOpen ? 'open' : 'closed'}`}>
+              <div className="panel-drawer-content" style={{ width: 340 }}>
+                <IncidentPanel
+                  level={phase.level}
+                  phase={phase}
+                  scenario={scenario}
+                  consequences={consequences}
+                  selectedAsset={selectedAsset}
+                  logs={logs}
+                  onGenerateReport={() => setReportModal(true)}
+                  decisionStage={decisionStage}
+                  activeChannels={activeChannels}
+                  cyberState={cyberState}
+                  liveAssets={assets}
+                />
+              </div>
+            </div>
           </div>
         )}
 
