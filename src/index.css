@@ -144,22 +144,82 @@ html, body, #root {
   overflow: hidden;
 }
 
-/* ─── Dashboard grid (Strict NOC 3-column layout) ──────────── */
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: 300px 1fr 340px;
-  gap: 12px;
-  padding: 12px;
+/* ─── Dashboard layout (Flexible drawers) ──────────── */
+.dashboard-layout {
+  display: flex;
   height: 100%;
   overflow: hidden;
+  position: relative;
+  padding: 12px;
+  gap: 12px;
 }
-.dashboard-col {
+
+.panel-drawer {
+  height: 100%;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+}
+
+.panel-drawer.closed {
+  width: 0 !important;
+  opacity: 0;
+  margin: 0 !important;
+  pointer-events: none;
+}
+
+.panel-drawer-content {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  min-height: 0;
-  overflow: hidden;
 }
+.panel-drawer-content::-webkit-scrollbar {
+  display: none;
+}
+
+.dashboard-center {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+}
+
+/* Floating toggles */
+.drawer-toggle {
+  position: absolute;
+  top: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  background: var(--wg-bg-deep);
+  border: 1px solid var(--wg-border);
+  color: var(--wg-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 50;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.drawer-toggle:hover {
+  background: var(--wg-surface);
+  color: var(--wg-text);
+  border-color: rgba(255,255,255,0.2);
+}
+.drawer-toggle.left {
+  left: 12px;
+}
+.drawer-toggle.right {
+  right: 12px;
+}
+
 
 /* ─── Leaflet ─────────────────────────────────────────────── */
 .leaflet-container {
