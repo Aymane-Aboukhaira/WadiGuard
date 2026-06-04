@@ -17,6 +17,7 @@ import AssetModal  from './components/Modals/AssetModal';
 
 import AnalyseView  from './views/AnalyseView';
 import RapportsView from './views/RapportsView';
+import InfrastructureView from './views/InfrastructureView';
 
 function AppContent() {
   const {
@@ -193,6 +194,13 @@ function AppContent() {
         {tab === 'analyse' && (
           <div style={{ height: '100%', overflowY: 'auto' }}>
             <AnalyseView liveAssets={assets} phase={phase} timelineData={timelineData} />
+          </div>
+        )}
+
+        {/* ── Infrastructure ── */}
+        {tab === 'infrastructure' && (
+          <div style={{ height: '100%', overflowY: 'auto', background: 'var(--wg-bg-deep)' }}>
+            <InfrastructureView phase={phase} cyberState={cyberState} />
           </div>
         )}
 

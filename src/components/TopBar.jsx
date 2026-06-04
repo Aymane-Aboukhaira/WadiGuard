@@ -3,10 +3,11 @@ import { levelColor, levelSoft } from '../utils';
 import { ShieldCheck, Wifi, Bell, Radio, Sun, Moon, Target } from 'lucide-react';
 
 const TABS = [
-  { id: 'dashboard', label: 'Dashboard' },
-  { id: 'map',       label: 'Carte Tactique' },
-  { id: 'analyse',   label: 'Analyse & Risques' },
-  { id: 'rapports',  label: 'Rapports' },
+  { id: 'dashboard',      label: 'Dashboard' },
+  { id: 'map',            label: 'Carte Tactique' },
+  { id: 'infrastructure', label: 'État Infrastructure' },
+  { id: 'analyse',        label: 'Analyse & Risques' },
+  { id: 'rapports',       label: 'Rapports' },
 ];
 
 /* Mission chain micro-pipeline shown in jury mode */
