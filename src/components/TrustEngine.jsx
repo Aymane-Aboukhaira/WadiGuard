@@ -57,7 +57,7 @@ function TrustEngine({ phase }) {
         return (
           <div key={i} style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            padding: '4px 6px', borderRadius: 3,
+            padding: '6px 8px', borderRadius: 'var(--radius-sm)',
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
               <Icon size={10} color={sc} />
@@ -65,7 +65,7 @@ function TrustEngine({ phase }) {
             </div>
             <span className="mono-precision" style={{
               fontSize: 9.5, fontWeight: 700, color: sc,
-              padding: '1px 5px', borderRadius: 2,
+              padding: '1px 5px', borderRadius: 'var(--radius-sm)',
               background: `color-mix(in srgb, ${sc} 10%, transparent)`,
             }}>
               {check.value}

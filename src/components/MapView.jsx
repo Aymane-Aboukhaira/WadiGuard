@@ -65,7 +65,7 @@ function MapView({ assets, selectedAsset, setSelectedAssetId, layers, setLayers,
   }, [assets, isAlert]);
 
   return (
-    <div style={{ position: 'relative', overflow: 'hidden', borderRadius: 8, border: '1px solid var(--wg-border)', flex: 1, minHeight: 0, height: '100%' }}>
+    <div style={{ position: 'relative', overflow: 'hidden', borderRadius: 'var(--radius-lg)', border: '1px solid var(--wg-border)', flex: 1, minHeight: 0, height: '100%' }}>
 
       <MapContainer
         center={center}
@@ -404,7 +404,7 @@ function MapView({ assets, selectedAsset, setSelectedAssetId, layers, setLayers,
       </MapContainer>
 
       {/* Top-left: Tactical location label */}
-      <div className="glass-deep text-truncate-precision" style={{ position: 'absolute', left: 10, top: 10, zIndex: 500, borderRadius: 6, padding: '5px 10px', pointerEvents: 'none', border: `1px solid ${isAlert ? levelColor(phase.level) + '30' : 'var(--wg-border)'}` }}>
+      <div className="glass-deep text-truncate-precision" style={{ position: 'absolute', left: 10, top: 10, zIndex: 500, borderRadius: 'var(--radius-md)', padding: '6px 12px', pointerEvents: 'none', border: `1px solid ${isAlert ? levelColor(phase.level) + '30' : 'var(--wg-border)'}` }}>
         <p style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 10, fontWeight: 700, color: 'var(--wg-text)' }}>
           <MapPin size={11} color={isActive ? levelColor(phase.level) : 'var(--wg-cyan)'} />
           {isActive ? `${scenario.name}` : 'Surveillance Nominale · TTA'}
@@ -415,7 +415,7 @@ function MapView({ assets, selectedAsset, setSelectedAssetId, layers, setLayers,
       </div>
 
       {/* Controls: Overlays panel */}
-      <div className="glass-deep" style={{ position: 'absolute', right: 10, top: 10, zIndex: 500, borderRadius: 6, padding: '8px 10px', minWidth: 130, border: '1px solid var(--wg-border)' }}>
+      <div className="glass-deep" style={{ position: 'absolute', right: 10, top: 10, zIndex: 500, borderRadius: 'var(--radius-md)', padding: '10px 12px', minWidth: 130, border: '1px solid var(--wg-border)' }}>
         <p className="section-label" style={{ marginBottom: 4, fontSize: '7.5px' }}>Fonds de carte</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: 8 }}>
           {[['dark', 'Dark Mode'], ['satellite', 'Satellite'], ['topographic', 'Topographic']].map(([val, label]) => (
@@ -439,7 +439,7 @@ function MapView({ assets, selectedAsset, setSelectedAssetId, layers, setLayers,
       </div>
 
       {/* Legend */}
-      <div className="glass-deep" style={{ position: 'absolute', left: 10, bottom: 10, zIndex: 500, borderRadius: 6, padding: '5px 7px', pointerEvents: 'none', border: '1px solid var(--wg-border)' }}>
+      <div className="glass-deep" style={{ position: 'absolute', left: 10, bottom: 10, zIndex: 500, borderRadius: 'var(--radius-md)', padding: '8px 10px', pointerEvents: 'none', border: '1px solid var(--wg-border)' }}>
         <p className="section-label" style={{ fontSize: '7px', marginBottom: 3 }}>Légende</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           {Object.entries(LEVELS).map(([k, lv]) => (

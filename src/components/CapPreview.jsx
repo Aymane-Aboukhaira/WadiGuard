@@ -61,7 +61,7 @@ function CapPreview({ scenario, phase, consequences }) {
           </span>
         </div>
         <button onClick={handleCopy} style={{
-          display: 'flex', alignItems: 'center', gap: 4, padding: '2px 8px', borderRadius: 4,
+          display: 'flex', alignItems: 'center', gap: 4, padding: '2px 8px', borderRadius: 'var(--radius-sm)',
           background: copied ? 'rgba(34,197,94,0.1)' : 'var(--wg-subtle)',
           border: `1px solid ${copied ? 'rgba(34,197,94,0.3)' : 'var(--wg-border)'}`,
           color: copied ? 'var(--wg-green)' : 'var(--wg-muted)',
@@ -75,7 +75,7 @@ function CapPreview({ scenario, phase, consequences }) {
 
       {/* Key fields */}
       <div style={{
-        padding: 8, borderRadius: 6, background: 'var(--wg-bg-deep)',
+        padding: 8, borderRadius: 'var(--radius-md)', background: 'var(--wg-bg-deep)',
         border: '1px solid var(--wg-border)', maxHeight: 160, overflowY: 'auto',
         fontFamily: 'JetBrains Mono, monospace', fontSize: 9.5, lineHeight: 1.6,
         color: 'var(--wg-muted)',

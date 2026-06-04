@@ -33,7 +33,7 @@ function AlertDispatchMatrix({ activeChannels }) {
         return (
           <div key={ch.key} style={{
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-            padding: '7px 4px', borderRadius: 4,
+            padding: '7px 4px', borderRadius: 'var(--radius-sm)',
             background: st.bg, border: `1px solid ${st.border}`,
             transition: 'all 0.3s ease', minHeight: 54,
           }}>

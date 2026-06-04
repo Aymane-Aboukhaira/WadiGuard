@@ -37,10 +37,10 @@ const CircularGauge = React.memo(({ value, label, trendData, color }) => {
   }, [trendData]);
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'var(--wg-surface-alpha)', border: '1px solid var(--wg-border)', borderRadius: '6px', padding: '7px 10px', height: '68px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'var(--wg-surface-alpha)', border: '1px solid var(--wg-border)', borderRadius: 'var(--radius-md)', padding: '7px 10px', height: '68px' }}>
       <div style={{ position: 'relative', width: size, height: size, flexShrink: 0 }}>
         <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-          <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="rgba(255, 255, 255, 0.02)" strokeWidth={strokeWidth} />
+          <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="var(--wg-subtle)" strokeWidth={strokeWidth} />
           <circle
             cx={size / 2}
             cy={size / 2}
@@ -189,7 +189,7 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
     <aside style={{ display: 'flex', flexDirection: 'column', gap: 10, minHeight: 0, overflow: 'hidden' }}>
       
       {/* ── Regional Coverage Card ── */}
-      <div className="glass" style={{ borderRadius: 8, padding: 12, display: 'flex', flexDirection: 'column', flexShrink: 0 }}>
+      <div className="glass" style={{ borderRadius: 'var(--radius-lg)', padding: 12, display: 'flex', flexDirection: 'column', flexShrink: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
           <div>
             <p className="section-label">Couverture Régionale</p>
@@ -217,7 +217,7 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '4px 6px', 
                   background: isSelected ? 'rgba(0, 240, 255, 0.05)' : 'var(--wg-subtle)', 
                   border: `1px solid ${isSelected ? 'var(--wg-cyan)' : 'var(--wg-subtle)'}`, 
-                  borderRadius: 4, cursor: 'pointer', outline: 'none', transition: 'all 0.15s ease', textAlign: 'left'
+                  borderRadius: 'var(--radius-sm)', cursor: 'pointer', outline: 'none', transition: 'all 0.15s ease', textAlign: 'left'
                 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, minWidth: 0 }}>
                   <span style={{ width: 5, height: 5, borderRadius: '50%', background: styleCircle.color, flexShrink: 0 }} />
@@ -246,7 +246,7 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
       </div>
 
       {/* ── Asset Interactive Selector List ── */}
-      <div className="glass" style={{ borderRadius: 8, padding: '10px 12px', flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <div className="glass" style={{ borderRadius: 'var(--radius-lg)', padding: '10px 12px', flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
         <p className="section-label" style={{ fontSize: '10px', flexShrink: 0 }}>Liste des actifs ({assets.length})</p>
         <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 4, paddingRight: 4 }}>
           {assets.map(asset => {
@@ -258,7 +258,7 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
                 onClick={() => setSelectedAssetId(asset.id)}
                 style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                  width: '100%', padding: '6px 8px', borderRadius: '4px',
+                  width: '100%', padding: '6px 8px', borderRadius: 'var(--radius-sm)',
                   background: isSelected ? 'rgba(0, 240, 255, 0.05)' : 'var(--wg-subtle)',
                   border: `1px solid ${isSelected ? 'var(--wg-cyan)' : 'var(--wg-border)'}`,
                   color: 'var(--wg-text)', cursor: 'pointer', textAlign: 'left', outline: 'none',
@@ -281,7 +281,7 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
       </div>
 
       {/* ── Selected Asset Details & High-Fidelity Gauges ── */}
-      <div className="glass" style={{ borderRadius: 8, padding: 12, flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div className="glass" style={{ borderRadius: 'var(--radius-lg)', padding: 12, flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
         <div>
           <p className="section-label">Actif Sélectionné</p>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginTop: 2 }}>
@@ -342,7 +342,7 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
         </table>
 
         {/* Decision Box */}
-        <div style={{ padding: '8px 10px', background: levelSoft(selectedAsset.status), border: `1px solid ${levelColor(selectedAsset.status)}25`, borderRadius: '4px' }}>
+        <div style={{ padding: '8px 10px', background: levelSoft(selectedAsset.status), border: `1px solid ${levelColor(selectedAsset.status)}25`, borderRadius: 'var(--radius-sm)' }}>
           <p className="section-label" style={{ fontSize: '10px', color: 'var(--wg-muted)' }}>Décision automatique</p>
           <p style={{ fontSize: '11px', fontWeight: '700', color: levelColor(selectedAsset.status), marginTop: 2, display: 'flex', alignItems: 'center', gap: 4 }}>
             <CheckCircle2 size={10} color={levelColor(selectedAsset.status)} />

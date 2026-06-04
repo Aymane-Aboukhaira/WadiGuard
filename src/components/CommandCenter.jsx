@@ -64,19 +64,19 @@ function CommandCenter({
             <button onClick={togglePause} title={running ? 'Pause' : 'Démarrer'} style={{
               background: running ? 'rgba(239,68,68,0.1)' : 'rgba(16,185,129,0.1)',
               border: `1px solid ${running ? 'var(--wg-red)' : 'var(--wg-green)'}`,
-              borderRadius: 4, color: running ? 'var(--wg-red)' : 'var(--wg-green)',
+              borderRadius: 'var(--radius-sm)', color: running ? 'var(--wg-red)' : 'var(--wg-green)',
               width: 30, height: 26, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
             }}>
               {running ? <Pause size={11} fill="currentColor" /> : <Play size={11} fill="currentColor" />}
             </button>
             <button onClick={resetScenario} title="Réinitialiser" style={{
               background: 'var(--wg-subtle)', border: '1px solid var(--wg-border)',
-              borderRadius: 4, color: 'var(--wg-muted)', width: 30, height: 26,
+              borderRadius: 'var(--radius-sm)', color: 'var(--wg-muted)', width: 30, height: 26,
               display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
             }}>
               <RotateCcw size={11} />
             </button>
-            <div style={{ display: 'flex', border: '1px solid var(--wg-border)', borderRadius: 4, overflow: 'hidden', height: 26, background: 'var(--wg-bg-deep)' }}>
+            <div style={{ display: 'flex', border: '1px solid var(--wg-border)', borderRadius: 'var(--radius-sm)', overflow: 'hidden', height: 26, background: 'var(--wg-bg-deep)' }}>
               {[1, 2, 4].map(s => (
                 <button key={s} onClick={() => setSpeed(s)} style={{
                   background: speed === s ? 'var(--wg-blue)' : 'transparent',

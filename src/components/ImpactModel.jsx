@@ -52,7 +52,7 @@ function ImpactModel({ consequences, selectedAsset, phase, timelineData, liveAss
 
   return (
     <div className="glass" style={{
-      borderRadius: 8, display: 'flex', flexDirection: 'column', flexShrink: 0,
+      borderRadius: 'var(--radius-lg)', display: 'flex', flexDirection: 'column', flexShrink: 0,
       borderTop: isAlert ? `2px solid ${color}40` : undefined,
       transition: 'all 0.3s ease'
     }}>

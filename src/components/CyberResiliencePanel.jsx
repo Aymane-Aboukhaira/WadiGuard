@@ -46,7 +46,7 @@ function CyberResiliencePanel({ cyberState }) {
         return (
           <div key={row.key} style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            padding: '4px 6px', borderRadius: 3,
+            padding: '6px 8px', borderRadius: 'var(--radius-sm)',
             background: st.color === 'var(--wg-red)' ? 'rgba(220,38,38,0.03)' : 'var(--wg-subtle)',
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 4, minWidth: 0 }}>

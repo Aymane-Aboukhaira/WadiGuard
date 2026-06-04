@@ -153,7 +153,7 @@ function DemoMissionControl({
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
           <button onClick={togglePause} title={running ? 'Pause' : 'Reprendre'} style={{
-            width: 30, height: 26, borderRadius: 4, border: `1px solid ${running ? 'var(--wg-red)' : 'var(--wg-green)'}`,
+            width: 30, height: 26, borderRadius: 'var(--radius-sm)', border: `1px solid ${running ? 'var(--wg-red)' : 'var(--wg-green)'}`,
             background: running ? 'rgba(239,68,68,0.08)' : 'rgba(16,185,129,0.08)',
             color: running ? 'var(--wg-red)' : 'var(--wg-green)',
             display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
@@ -161,14 +161,14 @@ function DemoMissionControl({
             {running ? <Pause size={11} fill="currentColor" /> : <Play size={11} fill="currentColor" />}
           </button>
           <button onClick={advanceDemoStep} title="Étape suivante" style={{
-            width: 30, height: 26, borderRadius: 4, border: '1px solid var(--wg-border)',
+            width: 30, height: 26, borderRadius: 'var(--radius-sm)', border: '1px solid var(--wg-border)',
             background: 'var(--wg-subtle)', color: 'var(--wg-muted)',
             display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
           }}>
             <SkipForward size={11} />
           </button>
           <button onClick={resetScenario} title="Réinitialiser" style={{
-            width: 30, height: 26, borderRadius: 4, border: '1px solid var(--wg-border)',
+            width: 30, height: 26, borderRadius: 'var(--radius-sm)', border: '1px solid var(--wg-border)',
             background: 'var(--wg-subtle)', color: 'var(--wg-muted)',
             display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
           }}>
@@ -191,7 +191,7 @@ function DemoMissionControl({
         </div>
 
         {/* Speed */}
-        <div style={{ display: 'flex', border: '1px solid var(--wg-border)', borderRadius: 4, overflow: 'hidden', height: 24, background: 'var(--wg-bg-deep)' }}>
+        <div style={{ display: 'flex', border: '1px solid var(--wg-border)', borderRadius: 'var(--radius-sm)', overflow: 'hidden', height: 24, background: 'var(--wg-bg-deep)' }}>
           {[1, 2, 4].map(s => (
             <button key={s} onClick={() => setSpeed(s)} style={{
               background: speed === s ? 'var(--wg-blue)' : 'transparent',
