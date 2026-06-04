@@ -37,7 +37,7 @@ const CircularGauge = React.memo(({ value, label, trendData, color }) => {
   }, [trendData]);
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'rgba(5,6,8,0.25)', border: '1px solid var(--wg-border)', borderRadius: '6px', padding: '6px 10px', height: '62px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'var(--wg-surface-alpha)', border: '1px solid var(--wg-border)', borderRadius: '6px', padding: '7px 10px', height: '68px' }}>
       <div style={{ position: 'relative', width: size, height: size, flexShrink: 0 }}>
         <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
           <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="rgba(255, 255, 255, 0.02)" strokeWidth={strokeWidth} />
@@ -53,7 +53,7 @@ const CircularGauge = React.memo(({ value, label, trendData, color }) => {
             strokeLinecap="round"
             transform={`rotate(-90 ${size / 2} ${size / 2})`}
           />
-          <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" fill="#E2E8F0" fontSize="10px" className="mono-precision" fontWeight="700">
+          <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" fill="var(--wg-text)" fontSize="11px" className="mono-precision" fontWeight="700">
             {value}%
           </text>
         </svg>
@@ -92,11 +92,11 @@ const LinearGauge = React.memo(({ value, max = 100, label, trendData, color }) =
   }, [trendData]);
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'rgba(5,6,8,0.25)', border: '1px solid var(--wg-border)', borderRadius: '6px', padding: '6px 10px', height: '62px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'var(--wg-surface-alpha)', border: '1px solid var(--wg-border)', borderRadius: '6px', padding: '7px 10px', height: '68px' }}>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4 }}>
           <span className="section-label" style={{ fontSize: '10px' }}>{label}</span>
-          <span className="mono-precision" style={{ fontSize: '11px', fontWeight: '700', color }}>{value}mm/h</span>
+          <span className="mono-precision" style={{ fontSize: '12px', fontWeight: '700', color }}>{value}mm/h</span>
         </div>
         <div className="progress-bar" style={{ height: '3px', background: 'rgba(255, 255, 255, 0.02)' }}>
           <div className="progress-bar-fill" style={{ width: `${percent}%`, background: color }} />
@@ -135,7 +135,7 @@ const RiskGauge = React.memo(({ value, label, trendData, color }) => {
   }, [trendData]);
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'rgba(5,6,8,0.25)', border: '1px solid var(--wg-border)', borderRadius: '6px', padding: '6px 10px', height: '62px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'var(--wg-surface-alpha)', border: '1px solid var(--wg-border)', borderRadius: '6px', padding: '7px 10px', height: '68px' }}>
       <div style={{ position: 'relative', width: size, height: size, flexShrink: 0 }}>
         <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
           <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="rgba(255, 255, 255, 0.02)" strokeWidth={strokeWidth} />
@@ -151,7 +151,7 @@ const RiskGauge = React.memo(({ value, label, trendData, color }) => {
             strokeLinecap="round"
             transform={`rotate(-90 ${size / 2} ${size / 2})`}
           />
-          <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" fill="#E2E8F0" fontSize="11px" className="mono-precision" fontWeight="700">
+          <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" fill="var(--wg-text)" fontSize="12px" className="mono-precision" fontWeight="700">
             {value}
           </text>
         </svg>
@@ -199,7 +199,7 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
         </div>
 
         {/* Regions list */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 4, overflowY: 'auto', maxHeight: '120px', paddingRight: 4 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4, overflowY: 'auto', maxHeight: '130px', paddingRight: 4 }}>
           {REGIONS_DATA.map((reg, idx) => {
             const styleCircle = getCircleColors(reg.level);
             const isSelected = province === reg.name;
@@ -215,19 +215,19 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
                 }}
                 style={{ 
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '4px 6px', 
-                  background: isSelected ? 'rgba(0, 240, 255, 0.05)' : 'rgba(255,255,255,0.01)', 
-                  border: `1px solid ${isSelected ? 'var(--wg-cyan)' : 'rgba(255,255,255,0.02)'}`, 
+                  background: isSelected ? 'rgba(0, 240, 255, 0.05)' : 'var(--wg-subtle)', 
+                  border: `1px solid ${isSelected ? 'var(--wg-cyan)' : 'var(--wg-subtle)'}`, 
                   borderRadius: 4, cursor: 'pointer', outline: 'none', transition: 'all 0.15s ease', textAlign: 'left'
                 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, minWidth: 0 }}>
                   <span style={{ width: 5, height: 5, borderRadius: '50%', background: styleCircle.color, flexShrink: 0 }} />
-                  <span className="layout-lock" style={{ fontSize: '11px', color: isSelected ? 'var(--wg-cyan)' : '#E2E8F0', fontWeight: isSelected ? '700' : '500' }}>{reg.name}</span>
+                  <span className="layout-lock" style={{ fontSize: '11px', color: isSelected ? 'var(--wg-cyan)' : 'var(--wg-text)', fontWeight: isSelected ? '700' : '500' }}>{reg.name}</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                   {/* Total */}
                   <div className="mono-precision" style={{
                     width: '18px', height: '18px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    background: 'rgba(255,255,255,0.03)', border: '1px solid var(--wg-border)', color: 'var(--wg-muted)', fontSize: '10px', fontWeight: '700'
+                    background: 'var(--wg-subtle)', border: '1px solid var(--wg-border)', color: 'var(--wg-muted)', fontSize: '10px', fontWeight: '700'
                   }}>
                     {reg.total}
                   </div>
@@ -259,15 +259,15 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
                 style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                   width: '100%', padding: '6px 8px', borderRadius: '4px',
-                  background: isSelected ? 'rgba(0, 240, 255, 0.05)' : 'rgba(255,255,255,0.01)',
+                  background: isSelected ? 'rgba(0, 240, 255, 0.05)' : 'var(--wg-subtle)',
                   border: `1px solid ${isSelected ? 'var(--wg-cyan)' : 'var(--wg-border)'}`,
-                  color: '#E2E8F0', cursor: 'pointer', textAlign: 'left', outline: 'none',
+                  color: 'var(--wg-text)', cursor: 'pointer', textAlign: 'left', outline: 'none',
                   transition: 'all 0.15s ease'
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, minWidth: 0 }}>
                   <span style={{ width: 6, height: 6, borderRadius: '50%', background: color, flexShrink: 0 }} />
-                  <span className="layout-lock" style={{ fontSize: '11px', fontWeight: isSelected ? '700' : '500', color: isSelected ? 'var(--wg-cyan)' : '#E2E8F0' }}>
+                  <span className="layout-lock" style={{ fontSize: '11px', fontWeight: isSelected ? '700' : '500', color: isSelected ? 'var(--wg-cyan)' : 'var(--wg-text)' }}>
                     {asset.shortName}
                   </span>
                 </div>
@@ -285,7 +285,7 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
         <div>
           <p className="section-label">Actif Sélectionné</p>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginTop: 2 }}>
-            <h3 className="section-title text-truncate-precision" style={{ fontSize: '12.5px', margin: 0 }}>{selectedAsset.name}</h3>
+            <h3 className="section-title text-truncate-precision" style={{ fontSize: '13px', margin: 0 }}>{selectedAsset.name}</h3>
             <button 
               onClick={() => onOpenAsset(selectedAsset)}
               style={{ background: 'none', border: 'none', color: 'var(--wg-cyan)', fontSize: '10px', fontWeight: '700', cursor: 'pointer', padding: 0 }}
@@ -320,7 +320,7 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
         </div>
 
         {/* Asset Summary Table */}
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '10.5px', color: '#E2E8F0', marginTop: 2, tableLayout: 'fixed' }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', color: 'var(--wg-text)', marginTop: 2, tableLayout: 'fixed' }}>
           <tbody>
             {[
               { label: 'Capacité', val: selectedAsset.capacity || '—' },
@@ -329,7 +329,7 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
               { label: 'Batterie', val: `${selectedAsset.battery}%`, class: 'mono-precision' },
               { label: 'Sync', val: `${selectedAsset.lastSync || 'Just now'} ago` },
             ].map((row, rIdx) => (
-              <tr key={rIdx} style={{ borderBottom: '1px solid rgba(255,255,255,0.015)' }}>
+              <tr key={rIdx} style={{ borderBottom: '1px solid var(--wg-border)' }}>
                 <td className="section-label" style={{ padding: '4px 0', width: '80px', fontSize: '10px', color: 'var(--wg-muted)' }}>{row.label}</td>
                 <td className={row.class || ''} style={{ padding: '4px 0', textAlign: 'right', fontWeight: '600' }}>
                   <div className="layout-lock" style={{ display: 'inline-block', minWidth: '45px', textAlign: 'right' }}>
@@ -342,9 +342,9 @@ export default function RegionalPanel({ province, setProvince, assets, selectedA
         </table>
 
         {/* Decision Box */}
-        <div style={{ padding: '6px 8px', background: levelSoft(selectedAsset.status), border: `1px solid ${levelColor(selectedAsset.status)}25`, borderRadius: '4px' }}>
+        <div style={{ padding: '8px 10px', background: levelSoft(selectedAsset.status), border: `1px solid ${levelColor(selectedAsset.status)}25`, borderRadius: '4px' }}>
           <p className="section-label" style={{ fontSize: '10px', color: 'var(--wg-muted)' }}>Décision automatique</p>
-          <p style={{ fontSize: '10.5px', fontWeight: '700', color: levelColor(selectedAsset.status), marginTop: 1, display: 'flex', alignItems: 'center', gap: 4 }}>
+          <p style={{ fontSize: '11px', fontWeight: '700', color: levelColor(selectedAsset.status), marginTop: 2, display: 'flex', alignItems: 'center', gap: 4 }}>
             <CheckCircle2 size={10} color={levelColor(selectedAsset.status)} />
             {LEVELS[selectedAsset.status]?.action || 'Surveillance active'}
           </p>

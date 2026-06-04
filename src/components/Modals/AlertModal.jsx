@@ -57,7 +57,7 @@ export default function AlertModal({ level, scenario, consequences, onAcknowledg
                 { icon: Route,  label: 'Routes bloquées',    value: `${consequences.roads}`,            color: '#F59E0B' },
                 { icon: Radio,  label: 'Équipes déployées',  value: `${consequences.teams}`,            color: '#4A9FE0' },
               ].map(({ icon: Icon, label, value, color: c }) => (
-                <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 7, borderRadius: 8, padding: '6px 12px', background: 'rgba(255,255,255,0.04)', border: '1px solid #1A2F4A' }}>
+                <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 7, borderRadius: 8, padding: '6px 12px', background: 'var(--wg-subtle)', border: '1px solid var(--wg-border)' }}>
                   <Icon size={12} color={c} />
                   <span style={{ fontSize: 10, color: '#8BA3BE' }}>{label} :</span>
                   <span style={{ fontSize: 13, fontWeight: 700, color: c }}>{value}</span>
@@ -70,7 +70,7 @@ export default function AlertModal({ level, scenario, consequences, onAcknowledg
           <div style={{ borderRadius: 12, padding: 16, marginBottom: 16, background: soft, border: `1px solid ${color}30` }}>
             <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.15em', color: '#8BA3BE', marginBottom: 10 }}>Actions requises immédiatement</p>
             {actions.map((a, i) => (
-              <p key={i} style={{ fontSize: 13, color: '#E8F4FD', padding: '4px 0', borderBottom: i < actions.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}>{a}</p>
+              <p key={i} style={{ fontSize: 13, color: 'var(--wg-text)', padding: '4px 0', borderBottom: i < actions.length - 1 ? '1px solid var(--wg-border)' : 'none' }}>{a}</p>
             ))}
           </div>
 

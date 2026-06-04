@@ -33,16 +33,16 @@ function AlertDispatchMatrix({ activeChannels }) {
         return (
           <div key={ch.key} style={{
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-            padding: '6px 4px', borderRadius: 4,
+            padding: '7px 4px', borderRadius: 4,
             background: st.bg, border: `1px solid ${st.border}`,
-            transition: 'all 0.3s ease', minHeight: 48,
+            transition: 'all 0.3s ease', minHeight: 54,
           }}>
-            <Icon size={12} color={st.color} style={{ marginBottom: 3, flexShrink: 0 }} />
-            <span style={{ fontSize: 9.5, fontWeight: 700, color: 'var(--wg-text)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '100%', textAlign: 'center' }}>
+            <Icon size={13} color={st.color} style={{ marginBottom: 3, flexShrink: 0 }} />
+            <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--wg-text)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '100%', textAlign: 'center' }}>
               {ch.label}
             </span>
             <span className="mono-precision" style={{
-              fontSize: 8, fontWeight: 800, color: st.color,
+              fontSize: 9.5, fontWeight: 800, color: st.color,
               letterSpacing: '0.04em', marginTop: 2,
             }}>
               {st.label}

@@ -32,21 +32,21 @@ function CommandCenter({
       />
 
       {/* ── Normal Simulation Controls (always visible) ── */}
-      <div className="glass" style={{ borderRadius: 8, padding: '8px 14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0, gap: 12 }}>
+      <div className="glass" style={{ borderRadius: 8, padding: '10px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0, gap: 12 }}>
 
         {/* Left: Scenario Selector */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 5, flexShrink: 0 }}>
             <Settings size={12} color="var(--wg-cyan)" />
-            <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--wg-text)', letterSpacing: '0.02em', textTransform: 'uppercase' }}>Scénario</span>
+            <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--wg-text)', letterSpacing: '0.02em', textTransform: 'uppercase' }}>Scénario</span>
           </div>
           <select
             value={scenarioKey}
             onChange={(e) => changeScenario(e.target.value)}
             style={{
               background: 'var(--wg-bg-deep)', border: '1px solid var(--wg-border)',
-              borderRadius: 4, color: 'var(--wg-cyan)', fontSize: 11, fontWeight: 700,
-              padding: '2px 6px', outline: 'none', cursor: 'pointer', maxWidth: 170,
+              borderRadius: 4, color: 'var(--wg-cyan)', fontSize: 12, fontWeight: 700,
+              padding: '3px 7px', outline: 'none', cursor: 'pointer', maxWidth: 170,
               fontFamily: 'Outfit, sans-serif',
             }}
           >
@@ -65,23 +65,23 @@ function CommandCenter({
               background: running ? 'rgba(239,68,68,0.1)' : 'rgba(16,185,129,0.1)',
               border: `1px solid ${running ? 'var(--wg-red)' : 'var(--wg-green)'}`,
               borderRadius: 4, color: running ? 'var(--wg-red)' : 'var(--wg-green)',
-              width: 26, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+              width: 30, height: 26, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
             }}>
               {running ? <Pause size={11} fill="currentColor" /> : <Play size={11} fill="currentColor" />}
             </button>
             <button onClick={resetScenario} title="Réinitialiser" style={{
-              background: 'rgba(255,255,255,0.02)', border: '1px solid var(--wg-border)',
-              borderRadius: 4, color: 'var(--wg-muted)', width: 26, height: 22,
+              background: 'var(--wg-subtle)', border: '1px solid var(--wg-border)',
+              borderRadius: 4, color: 'var(--wg-muted)', width: 30, height: 26,
               display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
             }}>
               <RotateCcw size={11} />
             </button>
-            <div style={{ display: 'flex', border: '1px solid var(--wg-border)', borderRadius: 4, overflow: 'hidden', height: 22, background: 'var(--wg-bg-deep)' }}>
+            <div style={{ display: 'flex', border: '1px solid var(--wg-border)', borderRadius: 4, overflow: 'hidden', height: 26, background: 'var(--wg-bg-deep)' }}>
               {[1, 2, 4].map(s => (
                 <button key={s} onClick={() => setSpeed(s)} style={{
                   background: speed === s ? 'var(--wg-blue)' : 'transparent',
-                  border: 'none', color: speed === s ? '#fff' : 'var(--wg-muted)',
-                  fontSize: 10, fontWeight: 700, padding: '0 7px', cursor: 'pointer', height: '100%',
+                  border: 'none', color: speed === s ? 'var(--wg-text)' : 'var(--wg-muted)',
+                  fontSize: 11, fontWeight: 700, padding: '0 8px', cursor: 'pointer', height: '100%',
                 }}>
                   x{s}
                 </button>
@@ -93,14 +93,14 @@ function CommandCenter({
         {/* Right: Timer + Phase */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 3 }}>
-            <span style={{ fontSize: 9, color: 'var(--wg-muted)', textTransform: 'uppercase' }}>T:</span>
+            <span style={{ fontSize: 10, color: 'var(--wg-muted)', textTransform: 'uppercase' }}>T:</span>
             <span className="mono-precision layout-lock" style={{ fontSize: 12, fontWeight: 700, color: 'var(--wg-text)', minWidth: 30 }}>
               {String(Math.round(simTime)).padStart(2, '0')}s
             </span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 4, padding: '2px 7px', background: color + '15', border: `1px solid ${color}30`, borderRadius: 4 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 4, padding: '3px 9px', background: color + '15', border: `1px solid ${color}30`, borderRadius: 4 }}>
             <span style={{ width: 5, height: 5, borderRadius: '50%', background: color }} />
-            <span className="mono-precision" style={{ fontSize: 10, fontWeight: 800, color }}>{LEVELS[phase.level]?.label}</span>
+            <span className="mono-precision" style={{ fontSize: 11, fontWeight: 800, color }}>{LEVELS[phase.level]?.label}</span>
           </div>
         </div>
       </div>

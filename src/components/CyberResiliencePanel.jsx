@@ -46,17 +46,17 @@ function CyberResiliencePanel({ cyberState }) {
         return (
           <div key={row.key} style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            padding: '2px 5px', borderRadius: 3,
-            background: st.color === 'var(--wg-red)' ? 'rgba(220,38,38,0.03)' : 'rgba(255,255,255,0.01)',
+            padding: '4px 6px', borderRadius: 3,
+            background: st.color === 'var(--wg-red)' ? 'rgba(220,38,38,0.03)' : 'var(--wg-subtle)',
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 4, minWidth: 0 }}>
-              <Icon size={10} color={st.color} style={{ flexShrink: 0 }} />
-              <span style={{ fontSize: 10, color: 'var(--wg-text)', fontWeight: 500, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              <Icon size={11} color={st.color} style={{ flexShrink: 0 }} />
+              <span style={{ fontSize: 11, color: 'var(--wg-text)', fontWeight: 500, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {row.label}
               </span>
             </div>
             <span className="mono-precision" style={{
-              fontSize: 8, fontWeight: 700, padding: '1px 4px', borderRadius: 3,
+              fontSize: 9.5, fontWeight: 700, padding: '1px 5px', borderRadius: 3,
               background: st.bg, border: `1px solid ${st.border}`, color: st.color,
               letterSpacing: '0.03em', whiteSpace: 'nowrap', flexShrink: 0,
             }}>
@@ -69,9 +69,9 @@ function CyberResiliencePanel({ cyberState }) {
       {/* Fallback status message */}
       {isFallback && (
         <div style={{
-          marginTop: 4, padding: '4px 6px', borderRadius: 4,
+          marginTop: 4, padding: '5px 8px', borderRadius: 4,
           background: 'rgba(217,119,6,0.06)', border: '1px solid rgba(217,119,6,0.15)',
-          fontSize: 9, color: 'var(--wg-orange)', fontWeight: 600, textAlign: 'center',
+          fontSize: 10, color: 'var(--wg-orange)', fontWeight: 600, textAlign: 'center',
         }}>
           Perte 4G simulée — bascule LoRa — décision locale maintenue
         </div>

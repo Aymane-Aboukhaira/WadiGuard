@@ -118,6 +118,8 @@ function AppContent() {
                 phase={phase}
                 timelineData={timelineData}
                 liveAssets={assets}
+                decisionStage={decisionStage}
+                activeChannels={activeChannels}
               />
             </div>
             <IncidentPanel

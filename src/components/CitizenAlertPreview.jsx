@@ -55,7 +55,7 @@ function CitizenAlertPreview({ phase, scenario, consequences, selectedAsset }) {
       <div style={{ display: 'flex', gap: 2 }}>
         {TABS.map(t => (
           <button key={t.id} onClick={() => setLang(t.id)} style={{
-            flex: 1, padding: '3px 0', borderRadius: 4, fontSize: 10, fontWeight: 700,
+            flex: 1, padding: '4px 0', borderRadius: 4, fontSize: 11, fontWeight: 700,
             cursor: 'pointer', border: '1px solid var(--wg-border)', fontFamily: 'Outfit, sans-serif',
             background: lang === t.id ? 'rgba(0,240,255,0.08)' : 'transparent',
             color: lang === t.id ? 'var(--wg-cyan)' : 'var(--wg-muted)',
@@ -79,12 +79,12 @@ function CitizenAlertPreview({ phase, scenario, consequences, selectedAsset }) {
             background: isRed ? 'rgba(239,68,68,0.08)' : 'rgba(245,158,11,0.06)',
             borderBottom: `1px solid ${isRed ? 'rgba(239,68,68,0.15)' : 'rgba(245,158,11,0.1)'}`,
           }}>
-            <span style={{ fontSize: 9.5, fontWeight: 800, color, letterSpacing: '0.04em' }}>{msg.title}</span>
-            <span className="mono-precision" style={{ fontSize: 8.5, color: 'var(--wg-muted)' }}>maintenant</span>
+            <span style={{ fontSize: 11, fontWeight: 800, color, letterSpacing: '0.04em' }}>{msg.title}</span>
+            <span className="mono-precision" style={{ fontSize: 10, color: 'var(--wg-muted)' }}>maintenant</span>
           </div>
           {/* Message body */}
           <div style={{
-            padding: '8px 10px', fontSize: 11, color: 'var(--wg-text)', lineHeight: 1.5,
+            padding: '8px 10px', fontSize: 12, color: 'var(--wg-text)', lineHeight: 1.55,
             whiteSpace: 'pre-line', fontFamily: lang === 'ar' ? 'system-ui, sans-serif' : 'Outfit, sans-serif',
             direction: lang === 'ar' ? 'rtl' : 'ltr',
             maxHeight: 120, overflowY: 'auto',
@@ -95,7 +95,7 @@ function CitizenAlertPreview({ phase, scenario, consequences, selectedAsset }) {
           {msg.footer && (
             <div style={{
               padding: '4px 8px', borderTop: '1px solid var(--wg-border)',
-              fontSize: 8.5, color: 'var(--wg-muted)', display: 'flex', justifyContent: 'space-between',
+              fontSize: 10, color: 'var(--wg-muted)', display: 'flex', justifyContent: 'space-between',
             }}>
               <span>{msg.footer}</span>
               <span style={{ color: 'var(--wg-green)', fontWeight: 700 }}>✓ ENVOYÉ</span>
@@ -108,7 +108,7 @@ function CitizenAlertPreview({ phase, scenario, consequences, selectedAsset }) {
         </div>
       )}
 
-      <p style={{ fontSize: 8, color: 'var(--wg-muted)', textAlign: 'center', fontStyle: 'italic' }}>
+      <p style={{ fontSize: 9, color: 'var(--wg-muted)', textAlign: 'center', fontStyle: 'italic' }}>
         Simulation d'alerte citoyenne · Intégration SMS/WhatsApp future
       </p>
     </div>

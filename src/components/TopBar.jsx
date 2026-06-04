@@ -40,14 +40,14 @@ export default function TopBar({ clock, level, tab, setTab, alertCount, onlineCo
           </div>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ fontSize: 15, fontWeight: 900, color: 'var(--wg-text)', letterSpacing: '-0.3px' }}>WadiGuard</span>
+              <span style={{ fontSize: 16, fontWeight: 900, color: 'var(--wg-text)', letterSpacing: '-0.3px' }}>WadiGuard</span>
               <span style={{
                 borderRadius: 4, border: '1px solid rgba(74,159,224,0.3)',
                 background: 'rgba(74,159,224,0.08)', color: '#4A9FE0',
                 padding: '0px 5px', fontSize: 9, fontWeight: 700,
               }}>v4</span>
             </div>
-            <p style={{ fontSize: 9, color: 'var(--wg-muted)', lineHeight: 1.2, marginTop: 1 }}>
+            <p style={{ fontSize: 10, color: 'var(--wg-muted)', lineHeight: 1.2, marginTop: 1 }}>
               Tanger · Tétouan · Al Hoceïma
             </p>
           </div>
@@ -86,7 +86,7 @@ export default function TopBar({ clock, level, tab, setTab, alertCount, onlineCo
                   <div key={c} style={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <div title={CHAIN_FULL[i]} style={{
                       padding: '1px 4px', borderRadius: 3,
-                      fontSize: 7.5, fontWeight: 800, letterSpacing: '0.05em',
+                      fontSize: 9, fontWeight: 800, letterSpacing: '0.05em',
                       background: active ? `${color}20` : done ? 'rgba(0,240,255,0.06)' : 'transparent',
                       border: `1px solid ${active ? color : done ? 'rgba(0,240,255,0.2)' : 'var(--wg-border)'}`,
                       color: active ? color : done ? 'var(--wg-cyan)' : 'var(--wg-muted)',
@@ -117,7 +117,7 @@ export default function TopBar({ clock, level, tab, setTab, alertCount, onlineCo
           <div style={{
             display: 'flex', alignItems: 'center', gap: 8,
             borderRadius: 8, border: `1px solid ${color}50`,
-            background: levelSoft(level), padding: '4px 10px',
+            background: levelSoft(level), padding: '5px 12px',
           }}>
             <div style={{ position: 'relative', width: 7, height: 7 }}>
               <div style={{ width: 7, height: 7, borderRadius: '50%', background: color, boxShadow: `0 0 8px ${color}` }} />
@@ -125,14 +125,14 @@ export default function TopBar({ clock, level, tab, setTab, alertCount, onlineCo
             </div>
             <div>
               <p style={{ fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--wg-muted)', lineHeight: 1.2 }}>Niveau</p>
-              <p style={{ fontSize: 11, fontWeight: 800, color, lineHeight: 1.2 }}>{meta.label}</p>
+              <p style={{ fontSize: 12, fontWeight: 800, color, lineHeight: 1.2 }}>{meta.label}</p>
             </div>
           </div>
 
           {/* Sensors + Alerts */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 10.5, color: 'var(--wg-muted)' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-              <Wifi size={11} color="var(--wg-green)" /> {onlineCount}/{totalCount}
+              <Wifi size={11} color="var(--wg-green)" /> <span style={{ fontSize: 11 }}>{onlineCount}/{totalCount}</span>
             </span>
             {alertCount > 0 && (
               <span style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
@@ -169,7 +169,7 @@ export default function TopBar({ clock, level, tab, setTab, alertCount, onlineCo
                 T+{String(Math.round(simTime || 0)).padStart(2, '0')}s
               </p>
             )}
-            <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: demoMode === 'jury' ? 10 : 14, fontWeight: 700, color: 'var(--wg-text)', lineHeight: 1.2 }}>{hms}</p>
+            <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: demoMode === 'jury' ? 10 : 15, fontWeight: 700, color: 'var(--wg-text)', lineHeight: 1.2 }}>{hms}</p>
             <p style={{ fontSize: 9, color: 'var(--wg-muted)' }}>{date}</p>
           </div>
         </div>

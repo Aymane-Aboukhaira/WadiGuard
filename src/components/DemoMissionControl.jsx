@@ -71,12 +71,12 @@ function DemoMissionControl({
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           <Zap size={12} color={color} />
-          <span style={{ fontSize: 10, fontWeight: 800, color: 'var(--wg-cyan)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+          <span style={{ fontSize: 11, fontWeight: 800, color: 'var(--wg-cyan)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
             Mission en cours
           </span>
           {running && (
             <span style={{
-              fontSize: 8, padding: '1px 5px', borderRadius: 3,
+              fontSize: 9, padding: '1px 5px', borderRadius: 3,
               background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)',
               color: 'var(--wg-red)', fontWeight: 700, animation: 'blink 1.2s infinite',
             }}>● LIVE</span>
@@ -111,7 +111,7 @@ function DemoMissionControl({
               }}>
                 <Icon size={10} color={stageColor} />
                 <span style={{
-                  fontSize: 8, fontWeight: 800, color: stageColor,
+                  fontSize: 9, fontWeight: 800, color: stageColor,
                   letterSpacing: '0.04em', textTransform: 'uppercase',
                 }}>{label}</span>
               </div>
@@ -129,7 +129,7 @@ function DemoMissionControl({
       {/* Story step label */}
       {storyStep && (
         <div style={{
-          fontSize: 10, fontWeight: 700, color: 'var(--wg-text)',
+          fontSize: 11, fontWeight: 700, color: 'var(--wg-text)',
           padding: '3px 8px', borderRadius: 4,
           background: `${color}08`, border: `1px solid ${color}15`,
           textAlign: 'center',
@@ -139,7 +139,7 @@ function DemoMissionControl({
       )}
 
       {/* Progress bar */}
-      <div style={{ height: 3, borderRadius: 2, background: 'var(--wg-border)', overflow: 'hidden' }}>
+      <div style={{ height: 4, borderRadius: 2, background: 'var(--wg-border)', overflow: 'hidden' }}>
         <div style={{
           height: '100%', borderRadius: 2,
           width: `${progress}%`,
@@ -153,7 +153,7 @@ function DemoMissionControl({
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
           <button onClick={togglePause} title={running ? 'Pause' : 'Reprendre'} style={{
-            width: 26, height: 22, borderRadius: 4, border: `1px solid ${running ? 'var(--wg-red)' : 'var(--wg-green)'}`,
+            width: 30, height: 26, borderRadius: 4, border: `1px solid ${running ? 'var(--wg-red)' : 'var(--wg-green)'}`,
             background: running ? 'rgba(239,68,68,0.08)' : 'rgba(16,185,129,0.08)',
             color: running ? 'var(--wg-red)' : 'var(--wg-green)',
             display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
@@ -161,15 +161,15 @@ function DemoMissionControl({
             {running ? <Pause size={11} fill="currentColor" /> : <Play size={11} fill="currentColor" />}
           </button>
           <button onClick={advanceDemoStep} title="Étape suivante" style={{
-            width: 26, height: 22, borderRadius: 4, border: '1px solid var(--wg-border)',
-            background: 'rgba(255,255,255,0.02)', color: 'var(--wg-muted)',
+            width: 30, height: 26, borderRadius: 4, border: '1px solid var(--wg-border)',
+            background: 'var(--wg-subtle)', color: 'var(--wg-muted)',
             display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
           }}>
             <SkipForward size={11} />
           </button>
           <button onClick={resetScenario} title="Réinitialiser" style={{
-            width: 26, height: 22, borderRadius: 4, border: '1px solid var(--wg-border)',
-            background: 'rgba(255,255,255,0.02)', color: 'var(--wg-muted)',
+            width: 30, height: 26, borderRadius: 4, border: '1px solid var(--wg-border)',
+            background: 'var(--wg-subtle)', color: 'var(--wg-muted)',
             display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
           }}>
             <RotateCcw size={11} />
@@ -191,12 +191,12 @@ function DemoMissionControl({
         </div>
 
         {/* Speed */}
-        <div style={{ display: 'flex', border: '1px solid var(--wg-border)', borderRadius: 4, overflow: 'hidden', height: 20, background: 'var(--wg-bg-deep)' }}>
+        <div style={{ display: 'flex', border: '1px solid var(--wg-border)', borderRadius: 4, overflow: 'hidden', height: 24, background: 'var(--wg-bg-deep)' }}>
           {[1, 2, 4].map(s => (
             <button key={s} onClick={() => setSpeed(s)} style={{
               background: speed === s ? 'var(--wg-blue)' : 'transparent',
-              border: 'none', color: speed === s ? '#fff' : 'var(--wg-muted)',
-              fontSize: 9, fontWeight: 700, padding: '0 6px', cursor: 'pointer', height: '100%',
+              border: 'none', color: speed === s ? 'var(--wg-text)' : 'var(--wg-muted)',
+              fontSize: 10, fontWeight: 700, padding: '0 7px', cursor: 'pointer', height: '100%',
             }}>
               x{s}
             </button>

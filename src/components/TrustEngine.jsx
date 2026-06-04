@@ -57,15 +57,15 @@ function TrustEngine({ phase }) {
         return (
           <div key={i} style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            padding: '2px 5px', borderRadius: 3,
+            padding: '4px 6px', borderRadius: 3,
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-              <Icon size={8} color={sc} />
-              <span style={{ fontSize: 10, color: 'var(--wg-text)' }}>{check.label}</span>
+              <Icon size={10} color={sc} />
+              <span style={{ fontSize: 11, color: 'var(--wg-text)' }}>{check.label}</span>
             </div>
             <span className="mono-precision" style={{
-              fontSize: 8, fontWeight: 700, color: sc,
-              padding: '0px 4px', borderRadius: 2,
+              fontSize: 9.5, fontWeight: 700, color: sc,
+              padding: '1px 5px', borderRadius: 2,
               background: `color-mix(in srgb, ${sc} 10%, transparent)`,
             }}>
               {check.value}
@@ -80,13 +80,13 @@ function TrustEngine({ phase }) {
         background: verdict.bg, border: `1px solid color-mix(in srgb, ${verdict.color} 20%, transparent)`,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
-        <span style={{ fontSize: 9, fontWeight: 800, color: verdict.color, letterSpacing: '0.04em' }}>
+        <span style={{ fontSize: 10, fontWeight: 800, color: verdict.color, letterSpacing: '0.04em' }}>
           {verdict.text}
         </span>
         {isActive && (
           <span className="mono-precision" style={{
-            fontSize: 9, fontWeight: 800, color: isFalseAlarm ? 'var(--wg-orange)' : 'var(--wg-green)',
-            padding: '0 4px', borderRadius: 3,
+            fontSize: 10, fontWeight: 800, color: isFalseAlarm ? 'var(--wg-orange)' : 'var(--wg-green)',
+            padding: '0 5px', borderRadius: 3,
             background: isFalseAlarm ? 'rgba(217,119,6,0.1)' : 'rgba(5,150,105,0.1)',
           }}>
             {confidence}

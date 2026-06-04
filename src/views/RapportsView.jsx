@@ -89,7 +89,7 @@ export default function RapportsView({ logs, liveAssets, phase, scenario, conseq
                   borderRadius: 5, padding: '3px 8px', fontSize: 10, fontWeight: 700, cursor: 'pointer',
                   border: 'none', outline: 'none', transition: 'all 0.15s', fontFamily: 'Outfit, sans-serif',
                   background: filter === f ? 'var(--wg-blue)' : 'transparent',
-                  color: filter === f ? '#fff' : 'var(--wg-muted)',
+                  color: filter === f ? 'var(--wg-text)' : 'var(--wg-muted)',
                 }}>{f}</button>
               ))}
             </div>

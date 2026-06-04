@@ -62,7 +62,7 @@ function CapPreview({ scenario, phase, consequences }) {
         </div>
         <button onClick={handleCopy} style={{
           display: 'flex', alignItems: 'center', gap: 4, padding: '2px 8px', borderRadius: 4,
-          background: copied ? 'rgba(34,197,94,0.1)' : 'rgba(255,255,255,0.02)',
+          background: copied ? 'rgba(34,197,94,0.1)' : 'var(--wg-subtle)',
           border: `1px solid ${copied ? 'rgba(34,197,94,0.3)' : 'var(--wg-border)'}`,
           color: copied ? 'var(--wg-green)' : 'var(--wg-muted)',
           fontSize: 9.5, fontWeight: 700, cursor: 'pointer', transition: 'all 0.15s',

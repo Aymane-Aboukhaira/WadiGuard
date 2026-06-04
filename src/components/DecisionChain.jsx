@@ -42,8 +42,8 @@ function DecisionChain({ currentStage }) {
               position: 'relative',
             }}>
               <div style={{
-                width: isActive ? 28 : 22,
-                height: isActive ? 28 : 22,
+                width: isActive ? 30 : 24,
+                height: isActive ? 30 : 24,
                 borderRadius: '50%',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 background: isActive ? 'rgba(0,240,255,0.12)' : isPast ? 'rgba(5,150,105,0.08)' : 'var(--wg-bg-deep)',
@@ -51,10 +51,10 @@ function DecisionChain({ currentStage }) {
                 boxShadow: isActive ? '0 0 10px rgba(0,240,255,0.3)' : 'none',
                 transition: 'all 0.4s ease',
               }}>
-                <Icon size={isActive ? 13 : 10} color={nodeColor} />
+                <Icon size={isActive ? 14 : 11} color={nodeColor} />
               </div>
               <span style={{
-                fontSize: 9, fontWeight: 700, textTransform: 'uppercase',
+                fontSize: 10, fontWeight: 700, textTransform: 'uppercase',
                 letterSpacing: '0.08em', color: textColor,
                 transition: 'color 0.4s ease',
               }}>

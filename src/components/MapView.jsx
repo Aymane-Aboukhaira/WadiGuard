@@ -348,15 +348,15 @@ function MapView({ assets, selectedAsset, setSelectedAssetId, layers, setLayers,
 
                     {/* Telemetry grid */}
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 4, marginBottom: 6 }}>
-                      <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--wg-border)', padding: '3px 5px', borderRadius: 4, textAlign: 'center' }}>
+                      <div style={{ background: 'var(--wg-subtle)', border: '1px solid var(--wg-border)', padding: '3px 5px', borderRadius: 4, textAlign: 'center' }}>
                         <p style={{ fontSize: 7, color: 'var(--wg-muted)', textTransform: 'uppercase', margin: 0 }}>Eau</p>
                         <p className="mono-precision" style={{ fontWeight: 700, fontSize: 11, margin: 0, color: rColor }}>{asset.water}%</p>
                       </div>
-                      <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--wg-border)', padding: '3px 5px', borderRadius: 4, textAlign: 'center' }}>
+                      <div style={{ background: 'var(--wg-subtle)', border: '1px solid var(--wg-border)', padding: '3px 5px', borderRadius: 4, textAlign: 'center' }}>
                         <p style={{ fontSize: 7, color: 'var(--wg-muted)', textTransform: 'uppercase', margin: 0 }}>Pluie</p>
                         <p className="mono-precision" style={{ fontWeight: 700, fontSize: 11, margin: 0, color: 'var(--wg-cyan)' }}>{asset.rain}mm</p>
                       </div>
-                      <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--wg-border)', padding: '3px 5px', borderRadius: 4, textAlign: 'center' }}>
+                      <div style={{ background: 'var(--wg-subtle)', border: '1px solid var(--wg-border)', padding: '3px 5px', borderRadius: 4, textAlign: 'center' }}>
                         <p style={{ fontSize: 7, color: 'var(--wg-muted)', textTransform: 'uppercase', margin: 0 }}>Risque</p>
                         <p className="mono-precision" style={{ fontWeight: 700, fontSize: 11, margin: 0, color: rColor }}>{asset.riskScore}</p>
                       </div>

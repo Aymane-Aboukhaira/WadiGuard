@@ -169,7 +169,7 @@ export default function AnalyseView({ liveAssets, phase, timelineData }) {
                   padding: '3px 8px', borderRadius: 4, fontSize: 10, fontWeight: 700, cursor: 'pointer',
                   border: '1px solid var(--wg-border)', fontFamily: 'Outfit, sans-serif',
                   background: typeFilter === k ? 'var(--wg-blue)' : 'transparent',
-                  color: typeFilter === k ? '#fff' : 'var(--wg-muted)',
+                  color: typeFilter === k ? 'var(--wg-text)' : 'var(--wg-muted)',
                 }}>{l}</button>
               ))}
             </div>
